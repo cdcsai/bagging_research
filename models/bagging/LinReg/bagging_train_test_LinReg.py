@@ -53,7 +53,7 @@ if __name__ == "__main__":
     x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.99)
     print(len(x_train), len(x_test))
 
-    for N in tqdm(range(5, 1000)):
+    for N in tqdm(range(5, 500)):
 
         predictions = []
         for tr in range(N):

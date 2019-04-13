@@ -44,41 +44,54 @@ if __name__ == "__main__":
     dico = dict()
 
     # Loading datasets
-    X, y = make_regression(n_samples=100000, n_features=100, noise=0.5)
-    x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.99)
+    X, y = make_regression(n_samples=1000, n_features=10, noise=0.5)
+    x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.95, random_state=0)
     print(len(x_train), len(x_test))
 
-    for N in tqdm(range(5, 500)):
-
+    # Without Bagging
+    mean_mse_wob = []
+    for i in range(1000):
         predictions = []
-        for tr in range(N):
-            # prop = 1 / args.m
-            # size_subset = int(prop * len(x_train))
-            # x_train_sub, y_train_sub = x_train[tr*size_subset:(tr+1)*size_subset], y_train[tr*size_subset:(tr+1)*size_subset]
-            # if special_bool(args.bagging):
-            #     print('Bagging Activated')
-            x_train_, y_train_ = bagging(x_train, y_train)
-
-            assert len(x_train_) == len(y_train_)
-            # else:
-            #     x_train_, y_train_ = x_train_sub, y_train_sub
-
-            reg = LinearRegression()
-            reg.fit(x_train_, y_train_)
-            predictions.append(reg.predict(x_test))
+        reg = LinearRegression()
+        reg.fit(x_train, y_train)
+        predictions.append(reg.predict(x_test))
         predictions = np.array(predictions)
 
         # Testing
         final_pred_ = np.mean(predictions, axis=0)
-
         assert len(final_pred_) == len(y_test)
+        mse = mean_squared_error(y_test, final_pred_)
+        mean_mse_wob.append(mse)
+    mse_wob = np.mean(mean_mse_wob)
 
-        acc = mean_squared_error(y_test, final_pred_)
-        dico[N] = acc
+    for N in tqdm(range(5, 200)):
+        mean_mse = []
+        for i in range(1000):
+            predictions = []
+            for tr in range(N):
+                # prop = 1 / args.m
+                # size_subset = int(prop * len(x_train))
+                # x_train_sub, y_train_sub = x_train[tr*size_subset:(tr+1)*size_subset], y_train[tr*size_subset:(tr+1)*size_subset]
+                # if special_bool(args.bagging):
+                #     print('Bagging Activated')
+                x_train_, y_train_ = bagging(x_train, y_train)
 
-        # with open(os.path.join('/home/charles/Desktop/deep_nlp_research/models/bagging/LogReg',
-        #                        'results_bagging_logreg.txt'), 'a') as f:
-        #     f.write(f'{args.bagging}|{args.m}|{str(acc)}' + '\n')
+                assert len(x_train_) == len(y_train_)
+                # else:
+                #     x_train_, y_train_ = x_train_sub, y_train_sub
+
+                reg = LinearRegression()
+                reg.fit(x_train_, y_train_)
+                predictions.append(reg.predict(x_test))
+            predictions = np.array(predictions)
+
+            # Testing
+            final_pred_ = np.mean(predictions, axis=0)
+            assert len(final_pred_) == len(y_test)
+            mse = mean_squared_error(y_test, final_pred_)
+            mean_mse.append(mse)
+
+        dico[N] = np.mean(mean_mse)
 
     print('finish')
 

@@ -42,14 +42,14 @@ if __name__ == "__main__":
     random.seed(args.seed)
     np.random.seed(args.seed)
     dico = defaultdict(list)
-    X, y = make_regression(n_samples=100, n_features=5, noise=0.5)
+    X, y = make_regression(n_samples=500, n_features=5, noise=0.5)
     x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0)
 
     # Hyper-parameters
-    for N in range(10, 50):
+    for N in range(10, 100):
         mean_beta_with_bagging, mean_beta_without_bagging = [], []
 
-        for iter in tqdm(range(20)):
+        for iter in tqdm(range(2)):
             # With Bagging
             predictions_before_bagging, predictions_after_bagging = [], []
             for tr in range(N):
@@ -75,7 +75,7 @@ if __name__ == "__main__":
             for i in range(len(x_train)):
                 x_train_loo = np.delete(x_train, i, 0)
                 y_train_loo = np.delete(y_train, i, 0)
-                assert x_train_loo.shape[0] == 99
+                assert x_train_loo.shape[0] == len(x_train) - 1
 
                 # Pred Loo with bagging
                 for tr in range(N):
