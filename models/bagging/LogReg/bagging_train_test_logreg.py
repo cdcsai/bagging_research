@@ -44,7 +44,6 @@ if __name__ == "__main__":
     random.seed(args.seed)
     np.random.seed(args.seed)
     # os.environ["CUDA_VISIBLE_DEVICES"] = f"{args.gpu_id}"
-
     dico = dict()
 
     # Loading datasets
@@ -57,22 +56,13 @@ if __name__ == "__main__":
     x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.99)
     print(len(x_train), len(x_test))
 
-    for N in tqdm(range(2, 500)):
+    # Without Bagging
+    mean_acc_wob = []
+    for i in range(1000):
         predictions = []
-        for tr in range(N):
-            # prop = 1 / args.m
-            # size_subset = int(prop * len(x_train))
-            # x_train_sub, y_train_sub = x_train[tr*size_subset:(tr+1)*size_subset], y_train[tr*size_subset:(tr+1)*size_subset]
-            # if special_bool(args.bagging):
-            #     print('Bagging Activated')
-            x_train_, y_train_ = bagging(x_train, y_train)
-            assert len(x_train_) == len(y_train_)
-            # else:
-            #     x_train_, y_train_ = x_train_sub, y_train_sub
-
-            cls = LogisticRegression()
-            cls.fit(x_train_, y_train_)
-            predictions.append(cls.predict(x_test))
+        cls = LogisticRegression()
+        cls.fit(x_train, y_train)
+        predictions.append(cls.predict(x_test))
         predictions = np.array(predictions)
 
         # Testing
@@ -83,11 +73,38 @@ if __name__ == "__main__":
         assert len(final_pred_) == len(y_test)
 
         acc = accuracy_score(y_test, final_pred_)
-        dico[N] = acc
+    acc_wob = np.mean(mean_acc_wob)
 
-        # with open(os.path.join('/home/charles/Desktop/deep_nlp_research/models/bagging/LogReg',
-        #                        'results_bagging_logreg.txt'), 'a') as f:
-        #     f.write(f'{args.bagging}|{args.m}|{str(acc)}' + '\n')
+    for N in tqdm(range(5, 100)):
+        mean_acc = []
+        for i in range(1000):
+            predictions = []
+            for tr in range(N):
+                # prop = 1 / args.m
+                # size_subset = int(prop * len(x_train))
+                # x_train_sub, y_train_sub = x_train[tr*size_subset:(tr+1)*size_subset], y_train[tr*size_subset:(tr+1)*size_subset]
+                # if special_bool(args.bagging):
+                #     print('Bagging Activated')
+                x_train_, y_train_ = bagging(x_train, y_train)
+
+                assert len(x_train_) == len(y_train_)
+                # else:
+                #     x_train_, y_train_ = x_train_sub, y_train_sub
+
+                cls = LogisticRegression()
+                cls.fit(x_train_, y_train_)
+                predictions.append(cls.predict(x_test))
+            predictions = np.array(predictions)
+
+            # Testing
+            final_pred_ = []
+            for i in range(len(x_test)):
+                c = Counter(predictions[:, i])
+                final_pred_.append(c.most_common(1)[0][0])
+            assert len(final_pred_) == len(y_test)
+
+            acc = accuracy_score(y_test, final_pred_)
+        dico[N] = np.mean(mean_acc)
 
     print('finish')
 
