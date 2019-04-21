@@ -34,8 +34,13 @@ def bagging(x, y):
 if __name__ == "__main__":
     from tqdm import tqdm
     parser = argparse.ArgumentParser(description='TLBiLSTM network')
-    parser.add_argument('--seed', type=int, default=42)
+    parser.add_argument('--seed', type=int, default=0)
+    parser.add_argument('--noise', type=int, default=0.5)
     parser.add_argument('--ds', type=str, default='cali', help="Dataset")
+    parser.add_argument('--n_feats', type=int, default=2, help="num features")
+    parser.add_argument('--n_average', type=int, default=500, help="Number or average")
+    parser.add_argument('--n_samples', type=int, default=1000, help="NUmber of samples")
+
     args = parser.parse_args()
     print("\n" + "Arguments are: " + "\n")
     print(args)
@@ -53,14 +58,14 @@ if __name__ == "__main__":
     elif args.ds == 'cali':
         X, y = fetch_california_housing()['data'], fetch_california_housing()['target']
     else:
-        X, y = make_regression(n_samples=1000, n_features=10, noise=2, random_state=0)
+        X, y = make_regression(n_samples=args.n_samples, n_features=args.n_feats, noise=args.noise, random_state=args.seed)
 
-    x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.95, random_state=0)
+    x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.95, random_state=args.seed)
     print(len(x_train), len(x_test))
 
     # Without Bagging
     mean_mse_wob = []
-    for i in range(1000):
+    for i in range(args.n_average):
         predictions = []
         reg = LinearRegression()
         reg.fit(x_train, y_train)
@@ -74,9 +79,9 @@ if __name__ == "__main__":
         mean_mse_wob.append(mse)
     mse_wob = np.mean(mean_mse_wob)
 
-    for N in tqdm(range(5, 90)):
+    for N in tqdm(range(5, 100)):
         mean_mse = []
-        for i in range(1000):
+        for i in range(args.n_average):
             predictions = []
             for tr in range(N):
                 # prop = 1 / args.m
@@ -104,7 +109,7 @@ if __name__ == "__main__":
         dico[N] = np.mean(mean_mse)
 
     print('finish')
-    with open(f'results_mse_{args.ds}.txt', 'w') as f:
+    with open(f'results_mse_{args.ds}|{args.noise}|{args.n_average}|{args.n_feats}|{args.n_samples}.txt', 'w') as f:
         f.write('mse_without_b |' + str(mse_wob) + '\n')
         for key, value in dico.items():
             f.write(str(key) + '|' + str(value) + '\n')
