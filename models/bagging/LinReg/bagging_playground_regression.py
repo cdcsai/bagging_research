@@ -35,7 +35,7 @@ if __name__ == "__main__":
     from tqdm import tqdm
     parser = argparse.ArgumentParser(description='TLBiLSTM network')
     parser.add_argument('--seed', type=int, default=42)
-    parser.add_argument('--ds', type=str, default='boston', help="Dataset")
+    parser.add_argument('--ds', type=str, default='cali', help="Dataset")
     args = parser.parse_args()
     print("\n" + "Arguments are: " + "\n")
     print(args)
@@ -108,3 +108,4 @@ if __name__ == "__main__":
         f.write('mse_without_b |' + str(mse_wob) + '\n')
         for key, value in dico.items():
             f.write(str(key) + '|' + str(value) + '\n')
+        f.close()
