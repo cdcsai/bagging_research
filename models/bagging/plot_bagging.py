@@ -1,31 +1,25 @@
-def special_bool(boolean: str):
-    if type(boolean) == bool:
-        return boolean
-    else:
-        if boolean == "True":
-            return True
-        else:
-            return False
-
 if __name__ == '__main__':
+    import pandas as pd
+
+    data = pd.read_csv('/home/charles/Desktop/bagging_research_/models/bagging/rademacher_dist.csv')
+    x, y1 = data['x'], data['y']
+
     import matplotlib.pyplot as plt
-    from mpl_toolkits.mplot3d import Axes3D
-    from collections import defaultdict
-    bagging, N, T, acc = [], [], [], []
-    with open('/home/charles/Desktop/deep_nlp_research/models/bagging/LogReg/results_bagging_logreg.txt') as f:
-        for i, line in enumerate(f.readlines()):
-            split_line = line.split('|')
-            bagging.append(int(special_bool(split_line[0])))
-            N.append(int(split_line[1]))
-            T.append(float(split_line[2]))
-            acc.append(float(split_line[3]))
+    import numpy as np
 
-    fig = plt.figure()
-    ax = fig.add_subplot(111, projection='3d')
+    ###preparing the figure
+    fig1 = plt.figure(1)
+    ax=fig1.add_subplot(1,1,1)
 
-    sp = ax.scatter(N, T, bagging, s=100, c=acc)
-    ax.set_xlabel('N')
-    ax.set_ylabel('T')
-    ax.set_zlabel('Bagging or Not')
-    plt.colorbar(sp)
+    ###the three sets of data to plot
+    ax.plot(x[6:], y1[6:], linestyle='', marker='o', color='r', label=r'$MSE(\hat{\sigma},n)-MSE(\sigma,n)$')
+    ax.plot(x, list(map(lambda x: (1 / x**2), x)), color='b', label=r'$\frac{-2\mu_4+3V^2}{n^2}$')
+
+    ###beautification
+    ax.legend(loc=0, fontsize=12)
+    ax.set_ylabel(r'$MSE(\hat{\sigma},n)-MSE(\sigma,n)$')
+    ax.set_xlabel("n")
+    ax.grid()
+
+    ###putting the plot
     plt.show()

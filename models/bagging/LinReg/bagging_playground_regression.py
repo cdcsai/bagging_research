@@ -10,6 +10,7 @@ from sklearn.datasets import make_regression
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
+from sklearn.datasets import load_boston, load_diabetes, fetch_california_housing
 
 
 def special_bool(boolean: str):
@@ -34,17 +35,26 @@ if __name__ == "__main__":
     from tqdm import tqdm
     parser = argparse.ArgumentParser(description='TLBiLSTM network')
     parser.add_argument('--seed', type=int, default=42)
-    parser.add_argument('--ds', type=str, default='bost', help="Dataset")
+    parser.add_argument('--ds', type=str, default='boston', help="Dataset")
     args = parser.parse_args()
     print("\n" + "Arguments are: " + "\n")
     print(args)
     random.seed(args.seed)
     np.random.seed(args.seed)
-
     dico = dict()
 
+
     # Loading datasets
-    X, y = make_regression(n_samples=1000, n_features=10, noise=0.5)
+
+    if args.ds == 'boston':
+        X, y = load_boston()['data'], load_boston()['target']
+    elif args.ds == 'diabetes':
+        X, y = load_diabetes()['data'], load_diabetes()['target']
+    elif args.ds == 'cali':
+        X, y = fetch_california_housing()['data'], fetch_california_housing()['target']
+    else:
+        X, y = make_regression(n_samples=1000, n_features=10, noise=2, random_state=0)
+
     x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.95, random_state=0)
     print(len(x_train), len(x_test))
 
@@ -64,7 +74,7 @@ if __name__ == "__main__":
         mean_mse_wob.append(mse)
     mse_wob = np.mean(mean_mse_wob)
 
-    for N in tqdm(range(5, 200)):
+    for N in tqdm(range(5, 90)):
         mean_mse = []
         for i in range(1000):
             predictions = []
@@ -94,4 +104,7 @@ if __name__ == "__main__":
         dico[N] = np.mean(mean_mse)
 
     print('finish')
-
+    with open(f'results_mse_{args.ds}.txt', 'w') as f:
+        f.write('mse_without_b |' + str(mse_wob) + '\n')
+        for key, value in dico.items():
+            f.write(str(key) + '|' + str(value) + '\n')

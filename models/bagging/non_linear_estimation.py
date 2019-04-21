@@ -1,7 +1,7 @@
 if __name__ == '__main__':
     import pandas as pd
 
-    data = pd.read_csv('/home/charles/Desktop/bagging_research/models/bagging/LinReg/non_lin_reg_2.csv')
+    data = pd.read_csv('/home/charles/Desktop/bagging_research_/models/bagging/LinReg/non_lin_reg_new.csv')
     x, y = data['x'], data['y']
 
     import matplotlib.pyplot as plt

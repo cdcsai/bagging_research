@@ -25,26 +25,21 @@ def sharpe_ratio_estimator(sample=1000):
     return sharpe_estimator
 
 
-
-
 if __name__ == '__main__':
     from tqdm import tqdm
-    import itertools
-    from collections import defaultdict
     from random import choices
 
-    # with open('results_est_var_2_gaussian.txt', 'a') as f:
-    #     f.write('Nb of samples distribution|Nb of samples to var|bias/mse_bag_var/mse|mse_var|mse_var_bag < mse_var' + '\n')
-
+    # TRUE_VAR = (1 / 3)
     TRUE_VAR = 1
-    SAMPLE_2 = 50000
-    dico = defaultdict(list)
+    SAMPLE_2 = 10000
+    dico = dict()
     count = 0
     N = 50
 
-    for n in tqdm(range(2, 10)):
+    for n in tqdm(range(2, 50)):
         total_var, total_var_bag = [], []
         for i in range(SAMPLE_2):
+            # x = np.random.normal(0, 1, size=n)
             # x = np.random.uniform(-1, 1, size=n)
             bernouilli = np.random.binomial(1, 0.5, size=n)
             # rademacher
@@ -79,15 +74,9 @@ if __name__ == '__main__':
         MSE_VAR = VAR_VAR + BIAS_sq_var
         MSE_VAR_BAG = VAR_VAR_bag + BIAS_sq_var_bag
 
-        DIST = MSE_VAR - MSE_VAR_BAG
+        DIST = (MSE_VAR - MSE_VAR_BAG)
 
         count += 1
-        dico[count].append(n)
-        dico[count].append(DIST)
+        dico[n] = DIST
 
     x = 0
-
-
-        # with open('results_est_var_2.txt', 'a') as f:
-        #     f.write(f'{str(sample_1)}|{str(sample_2)}|{str(round(BIAS_sq_var_bag / MSE_VAR_BAG, 2) * 100)}_{str(round(MSE_VAR_BAG, 5))}|'
-        #             f'{str(round(BIAS_sq_var / MSE_VAR, 2) * 100)}_{str(round(MSE_VAR, 5))}|{str(MSE_VAR_BAG <= MSE_VAR)}' + "\n")

@@ -53,12 +53,12 @@ if __name__ == "__main__":
         X, y = load_breast_cancer()['data'], load_breast_cancer()['target']
     else:
         X, y = load_digits()['data'], load_digits()['target']
-    x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.99)
+    x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.99, random_state=0)
     print(len(x_train), len(x_test))
 
     # Without Bagging
     mean_acc_wob = []
-    for i in range(1000):
+    for j in range(100):
         predictions = []
         cls = LogisticRegression()
         cls.fit(x_train, y_train)
@@ -73,11 +73,12 @@ if __name__ == "__main__":
         assert len(final_pred_) == len(y_test)
 
         acc = accuracy_score(y_test, final_pred_)
+        mean_acc_wob.append(acc)
     acc_wob = np.mean(mean_acc_wob)
 
     for N in tqdm(range(5, 100)):
         mean_acc = []
-        for i in range(1000):
+        for j in range(100):
             predictions = []
             for tr in range(N):
                 # prop = 1 / args.m
@@ -104,6 +105,7 @@ if __name__ == "__main__":
             assert len(final_pred_) == len(y_test)
 
             acc = accuracy_score(y_test, final_pred_)
+            mean_acc.append(acc)
         dico[N] = np.mean(mean_acc)
 
     print('finish')
