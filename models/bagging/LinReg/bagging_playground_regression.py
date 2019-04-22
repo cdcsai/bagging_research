@@ -35,7 +35,7 @@ if __name__ == "__main__":
     from tqdm import tqdm
     parser = argparse.ArgumentParser(description='TLBiLSTM network')
     parser.add_argument('--seed', type=int, default=0)
-    parser.add_argument('--noise', type=int, default=0.5)
+    parser.add_argument('--noise', type=float, default=0.5)
     parser.add_argument('--ds', type=str, default='cali', help="Dataset")
     parser.add_argument('--n_feats', type=int, default=2, help="num features")
     parser.add_argument('--n_average', type=int, default=500, help="Number or average")
@@ -60,7 +60,7 @@ if __name__ == "__main__":
     else:
         X, y = make_regression(n_samples=args.n_samples, n_features=args.n_feats, noise=args.noise, random_state=args.seed)
 
-    x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.95, random_state=args.seed)
+    x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.60, random_state=args.seed)
     print(len(x_train), len(x_test))
 
     # Without Bagging

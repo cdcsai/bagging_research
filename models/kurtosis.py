@@ -1,9 +1,15 @@
 import scipy
 import numpy as np
+import scipy.stats as st
 
-# S(Y) = 1 / 8 if lambda=1
 
-x = np.random.exponential(size=1000)
+#class SpecialRad(st.rv_discrete):
+
+   # def _rvs(self, p):
+       # return binom_gen._rvs(self, 1, p)
+
+
+#my_cv = SpecialRad(a=0, b=1, name='my_pdf')
 
 
 def mean_estimator(sample=1000):
@@ -25,14 +31,18 @@ def sharpe_ratio_estimator(sample=1000):
     return sharpe_estimator
 
 
+def kurtosis_estimator(dist='exponential', **kwargs):
+    x = eval(f'np.random.{dist}')(**kwargs)
+    mu_4 = np.mean(x**4)
+    var_2 = np.var(x)**2
+    kurtosis = mu_4 / var_2
+    return kurtosis
+
+
 if __name__ == '__main__':
     from tqdm import tqdm
-    import itertools
     from collections import defaultdict
     from random import choices
-
-    # with open('results_est_var_2_gaussian.txt', 'a') as f:
-    #     f.write('Nb of samples distribution|Nb of samples to var|bias/mse_bag_var/mse|mse_var|mse_var_bag < mse_var' + '\n')
 
     TRUE_VAR = 1
     SAMPLE_2 = 100000
@@ -81,8 +91,3 @@ if __name__ == '__main__':
         dico[count].append(DIST)
 
     x = 0
-
-
-        # with open('results_est_var_2.txt', 'a') as f:
-        #     f.write(f'{str(sample_1)}|{str(sample_2)}|{str(round(BIAS_sq_var_bag / MSE_VAR_BAG, 2) * 100)}_{str(round(MSE_VAR_BAG, 5))}|'
-        #             f'{str(round(BIAS_sq_var / MSE_VAR, 2) * 100)}_{str(round(MSE_VAR, 5))}|{str(MSE_VAR_BAG <= MSE_VAR)}' + "\n")
