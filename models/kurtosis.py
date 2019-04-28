@@ -1,15 +1,14 @@
 import scipy
 import numpy as np
 import scipy.stats as st
+from scipy import stats
 
 
-#class SpecialRad(st.rv_discrete):
-
-   # def _rvs(self, p):
-       # return binom_gen._rvs(self, 1, p)
-
-
-#my_cv = SpecialRad(a=0, b=1, name='my_pdf')
+def special_rad(p, size=1000):
+    xk = np.array([-1, 1,  np.sqrt(1 / 8), -np.sqrt(1 / 8)])
+    pk = (p / 2, p / 2, (1 - p) / 2, (1 - p) / 2)
+    custm = stats.rv_discrete(name='special_rad', values=(xk, pk))
+    return custm.rvs(size=size)
 
 
 def mean_estimator(sample=1000):
@@ -31,29 +30,44 @@ def sharpe_ratio_estimator(sample=1000):
     return sharpe_estimator
 
 
-def kurtosis_estimator(dist='exponential', **kwargs):
-    x = eval(f'np.random.{dist}')(**kwargs)
+def kurtosis_estimator(x):
     mu_4 = np.mean(x**4)
     var_2 = np.var(x)**2
     kurtosis = mu_4 / var_2
     return kurtosis
 
 
+def true_var(p):
+    return (1 / 8)*(1 - p) + p
+
+
+def kurt_special_rad(p):
+    num = p + ((1 - p) / 64)
+    denom = (p + ((1 - p) / 8)) ** 2
+    return num / denom
+
+
 if __name__ == '__main__':
     from tqdm import tqdm
-    from collections import defaultdict
     from random import choices
+    from collections import defaultdict
 
-    TRUE_VAR = 1
+    # TRUE_VAR = (1 / 3)
+    # TRUE_VAR = 1
     SAMPLE_2 = 100000
     dico = defaultdict(list)
-    count = 0
-    N = 50
+    N = 20
 
-    for n in tqdm(range(2, 20)):
+    for p in tqdm(np.arange(0.05, 0.95, 0.05)):
         total_var, total_var_bag = [], []
         for i in range(SAMPLE_2):
-            x = np.random.normal(0, 1, size=n)
+            # x = np.random.normal(0, 1, size=n)
+            # x = np.random.uniform(-1, 1, size=n)
+            # bernouilli = np.random.binomial(1, 0.5, size=n)
+            x = special_rad(p, size=10)
+            # print(kurtosis_estimator(x))
+            # rademacher
+            # x = 2 * bernouilli - 1
 
             # # Estimator MSE var
             var_x = np.var(x, ddof=1)
@@ -62,7 +76,7 @@ if __name__ == '__main__':
             # Estimator MSE var avec bagging
             mean_bagg = []
             for i in range(N):
-                bag = choices(x, k=n)
+                bag = choices(x, k=len(x))
                 var_x_bag = np.var(bag, ddof=1)
                 mean_bagg.append(var_x_bag)
             var_bag = np.mean(mean_bagg)
@@ -70,13 +84,9 @@ if __name__ == '__main__':
 
         EXP_var = np.mean(total_var)
         EXP_var_bag = np.mean(total_var_bag)
-        # RES_bag = EXP_var_bag / TRUE_VAR
-        # dico[count].append(N)
-        # dico[count].append(n)
-        # dico[count].append(RES_bag)
 
-        BIAS_sq_var = (EXP_var - TRUE_VAR) ** 2
-        BIAS_sq_var_bag = (EXP_var_bag - TRUE_VAR) ** 2
+        BIAS_sq_var = (EXP_var - true_var(p)) ** 2
+        BIAS_sq_var_bag = (EXP_var_bag - true_var(p)) ** 2
 
         VAR_VAR_bag = np.var(total_var_bag, ddof=1)
         VAR_VAR = np.var(total_var, ddof=1)
@@ -84,10 +94,13 @@ if __name__ == '__main__':
         MSE_VAR = VAR_VAR + BIAS_sq_var
         MSE_VAR_BAG = VAR_VAR_bag + BIAS_sq_var_bag
 
-        DIST = MSE_VAR - MSE_VAR_BAG
+        dico[p].append(MSE_VAR)
+        dico[p].append(MSE_VAR_BAG)
+    kurts = list(map(lambda p: kurt_special_rad(p), list(dico.keys())))
 
-        count += 1
-        dico[count].append(n)
-        dico[count].append(DIST)
+    with open(f'res_special_rad_{SAMPLE_2}.txt', 'w') as f:
+        for i, (key, val) in enumerate(dico.items()):
+            f.write(str(kurts[i]) + '|' + str(val[0]) + '|' + str(val[1]) + '\n')
+        f.close()
 
-    x = 0
+    print('done')

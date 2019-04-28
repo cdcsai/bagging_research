@@ -84,17 +84,8 @@ if __name__ == "__main__":
         for i in range(args.n_average):
             predictions = []
             for tr in range(N):
-                # prop = 1 / args.m
-                # size_subset = int(prop * len(x_train))
-                # x_train_sub, y_train_sub = x_train[tr*size_subset:(tr+1)*size_subset], y_train[tr*size_subset:(tr+1)*size_subset]
-                # if special_bool(args.bagging):
-                #     print('Bagging Activated')
                 x_train_, y_train_ = bagging(x_train, y_train)
-
                 assert len(x_train_) == len(y_train_)
-                # else:
-                #     x_train_, y_train_ = x_train_sub, y_train_sub
-
                 reg = LinearRegression()
                 reg.fit(x_train_, y_train_)
                 predictions.append(reg.predict(x_test))

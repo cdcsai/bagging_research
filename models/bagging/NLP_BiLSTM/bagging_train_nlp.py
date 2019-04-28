@@ -1,11 +1,11 @@
-import sys
-sys.path.append('/home/charles/Desktop/deep_nlp_research')
-import time
-from models.bilstm.embeddings import *
-import numpy as np
-import argparse
-import random
-import tensorflow as tf
+# import sys
+# sys.path.append('/home/charles/Desktop/deep_nlp_research')
+# import time
+# from models.bilstm.embeddings import *
+# import numpy as np
+# import argparse
+# import random
+
 
 
 def RNN(dim_embs, args, trainable=True):
@@ -66,6 +66,8 @@ def optimizer_sched(args, sched=False):
 
 
 if __name__ == "__main__":
+    import tensorflow as tf
+    import argparse
     parser = argparse.ArgumentParser(description='TLBiLSTM network')
     parser.add_argument('--model', type=str, default="glove", help="Word Representation Model")
     parser.add_argument('--bs', type=int, default=256, help="Batch Size")
