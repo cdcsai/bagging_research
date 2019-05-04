@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="66e170b2-87b7-4ea6-80df-ba48ee562929" name="Default Changelist" comment="Reorganization" />
+    <list default="true" id="66e170b2-87b7-4ea6-80df-ba48ee562929" name="Default Changelist" comment="Reorganization">
+      <change afterPath="$PROJECT_DIR$/models/kurtosis_optimized.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/kurtosis.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/kurtosis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/plot_kurtosis.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/plot_kurtosis.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -9,15 +14,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/bagging_research_$plot_kurtosis.coverage" NAME="plot_kurtosis Coverage Results" MODIFIED="1557005942452" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
     <SUITE FILE_PATH="coverage/bagging_research_$mc_unirofm.coverage" NAME="mc_unirofm Coverage Results" MODIFIED="1555279316183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models/bagging" />
     <SUITE FILE_PATH="coverage/bagging_research_$monte_carlo_bagging_wo_sub.coverage" NAME="monte_carlo_bagging_wo_sub Coverage Results" MODIFIED="1555278158674" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models/bagging" />
     <SUITE FILE_PATH="coverage/bagging_research_$bagging_xp_1_optimized.coverage" NAME="bagging_xp_1_optimized Coverage Results" MODIFIED="1556997969457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models/bagging/LinReg" />
+    <SUITE FILE_PATH="coverage/bagging_research_$kurtosis_optimized.coverage" NAME="kurtosis_optimized Coverage Results" MODIFIED="1557006021832" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
     <SUITE FILE_PATH="coverage/bagging_research_$non_linear_estimation.coverage" NAME="non_linear_estimation Coverage Results" MODIFIED="1556585921829" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models/bagging" />
     <SUITE FILE_PATH="coverage/bagging_research_$bagging_playground_regression.coverage" NAME="bagging_playground_regression Coverage Results" MODIFIED="1556997469071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models/bagging/LinReg" />
     <SUITE FILE_PATH="coverage/bagging_research_$bagging_train_test_logreg.coverage" NAME="bagging_train_test_logreg Coverage Results" MODIFIED="1555260887287" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models/bagging/LogReg" />
     <SUITE FILE_PATH="coverage/bagging_research_$testing_stability_linreg.coverage" NAME="testing_stability_linreg Coverage Results" MODIFIED="1554418468538" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models/bagging/LinReg" />
     <SUITE FILE_PATH="coverage/bagging_research_$plot_bagging.coverage" NAME="plot_bagging Coverage Results" MODIFIED="1555363428007" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models/bagging" />
-    <SUITE FILE_PATH="coverage/bagging_research_$kurtosis.coverage" NAME="kurtosis Coverage Results" MODIFIED="1556999854040" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
+    <SUITE FILE_PATH="coverage/bagging_research_$kurtosis.coverage" NAME="kurtosis Coverage Results" MODIFIED="1557000293603" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -35,14 +42,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/kurtosis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="69" column="35" lean-forward="true" selection-start-line="69" selection-start-column="35" selection-end-line="69" selection-end-column="35" />
+            <state relative-caret-position="105">
+              <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/models/kurtosis_optimized.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="100" column="25" lean-forward="true" selection-start-line="100" selection-start-column="25" selection-end-line="100" selection-end-column="25" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/plot_kurtosis.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
             </state>
           </provider>
         </entry>
@@ -81,6 +109,8 @@
         <option value="$PROJECT_DIR$/models/bagging/LinReg/xp.sh" />
         <option value="$PROJECT_DIR$/models/bagging/LinReg/bagging_xp_1_optimized.py" />
         <option value="$PROJECT_DIR$/models/kurtosis.py" />
+        <option value="$PROJECT_DIR$/models/plot_kurtosis.py" />
+        <option value="$PROJECT_DIR$/models/kurtosis_optimized.py" />
       </list>
     </option>
   </component>
@@ -101,6 +131,11 @@
             <path>
               <item name="bagging_research_" type="b2602c69:ProjectViewProjectNode" />
               <item name="bagging_research_" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bagging_research_" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bagging_research_" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -137,7 +172,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.kurtosis">
+  <component name="RunManager" selected="Python.kurtosis_optimized">
     <configuration name="bagging_playground_regression" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="bagging_research_" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -204,7 +239,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="non_linear_estimation" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="kurtosis_optimized" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="bagging_research_" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -212,12 +247,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/models/bagging" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/models" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/models/bagging/non_linear_estimation.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/models/kurtosis_optimized.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -226,7 +261,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="plot_bagging" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="plot_kurtosis" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="bagging_research_" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -234,12 +269,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/models/bagging" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/models" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/models/bagging/plot_bagging.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/models/plot_kurtosis.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -249,19 +284,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.non_linear_estimation" />
-      <item itemvalue="Python.plot_bagging" />
       <item itemvalue="Python.bagging_playground_regression" />
       <item itemvalue="Python.bagging_xp_1_optimized" />
       <item itemvalue="Python.kurtosis" />
+      <item itemvalue="Python.kurtosis_optimized" />
+      <item itemvalue="Python.plot_kurtosis" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.kurtosis_optimized" />
+        <item itemvalue="Python.plot_kurtosis" />
         <item itemvalue="Python.kurtosis" />
         <item itemvalue="Python.bagging_xp_1_optimized" />
         <item itemvalue="Python.bagging_playground_regression" />
-        <item itemvalue="Python.non_linear_estimation" />
-        <item itemvalue="Python.plot_bagging" />
       </list>
     </recent_temporary>
   </component>
@@ -279,7 +314,7 @@
       <workItem from="1555851087556" duration="11411000" />
       <workItem from="1556469098690" duration="4638000" />
       <workItem from="1556798878054" duration="342000" />
-      <workItem from="1556907748777" duration="22167000" />
+      <workItem from="1556907748777" duration="28086000" />
     </task>
     <task id="LOCAL-00001" summary="Updated stability XP">
       <created>1554154934492</created>
@@ -376,7 +411,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40135000" />
+    <option name="totallyTimeSpent" value="46054000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -389,13 +424,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2453505" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10801145" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.9628253" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3952912" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4448575" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -405,13 +441,13 @@
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="11" weight="0.38909543" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.46716234" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.17224288" />
       <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.32961586" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Remote Host" order="3" />
-      <window_info anchor="right" id="SciView" order="4" weight="0.2360515" />
+      <window_info anchor="right" id="SciView" order="4" weight="0.28040057" />
       <window_info anchor="right" id="Database" order="5" weight="0.32946378" />
     </layout>
   </component>
@@ -430,6 +466,18 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/models/kurtosis.py</url>
+          <line>78</line>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/models/plot_kurtosis.py</url>
+          <line>13</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -440,18 +488,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/anaconda3/envs/nlp/lib/python3.6/site-packages/mpl_toolkits/mplot3d/axes3d.py" />
-    <entry file="file://$PROJECT_DIR$/models/bagging/old_results/gaussian_dist.csv" />
-    <entry file="file://$PROJECT_DIR$/models/bagging/LogReg/nonlinreg.csv" />
-    <entry file="file://$PROJECT_DIR$/models/bagging/mc_unirofm.py" />
-    <entry file="file://$PROJECT_DIR$/models/bagging/LogReg/bagging_train_test_logreg.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1500">
-          <caret line="110" selection-start-line="110" selection-end-line="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/envs/nlp/lib/python3.6/site-packages/sklearn/datasets/samples_generator.py" />
     <entry file="file://$PROJECT_DIR$/models/bagging/LinReg/results_mse_boston.txt" />
     <entry file="file://$PROJECT_DIR$/old_results/results_mse_boston.txt">
       <provider selected="true" editor-type-id="text-editor" />
@@ -669,10 +705,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/models/bagging_xp_1_optimized.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/res_special_rad__1over12_trials=10_N=500_n=10.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/res_special_rad__1over12_trials=10_N=100_n=10.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/res_special_rad__1over12_trials=1000_N=50_n=10.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/plot_kurtosis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/models/kurtosis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="69" column="35" lean-forward="true" selection-start-line="69" selection-start-column="35" selection-end-line="69" selection-end-column="35" />
+        <state relative-caret-position="105">
+          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/kurtosis_optimized.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="100" column="25" lean-forward="true" selection-start-line="100" selection-start-column="25" selection-end-line="100" selection-end-column="25" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
