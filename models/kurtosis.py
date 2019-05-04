@@ -1,11 +1,10 @@
-import scipy
 import numpy as np
-import scipy.stats as st
 from scipy import stats
+from numba import njit
 
 
 def special_rad(p, size=1000):
-    xk = np.array([-1, 1,  np.sqrt(1 / 8), -np.sqrt(1 / 8)])
+    xk = np.array([-1, 1,  np.sqrt(1 / 16), -np.sqrt(1 / 16)])
     pk = (p / 2, p / 2, (1 - p) / 2, (1 - p) / 2)
     custm = stats.rv_discrete(name='special_rad', values=(xk, pk))
     return custm.rvs(size=size)
@@ -56,18 +55,13 @@ if __name__ == '__main__':
     # TRUE_VAR = 1
     SAMPLE_2 = 100000
     dico = defaultdict(list)
-    N = 20
+    N = 100
+    n = 10
 
     for p in tqdm(np.arange(0.05, 0.95, 0.05)):
         total_var, total_var_bag = [], []
         for i in range(SAMPLE_2):
-            # x = np.random.normal(0, 1, size=n)
-            # x = np.random.uniform(-1, 1, size=n)
-            # bernouilli = np.random.binomial(1, 0.5, size=n)
-            x = special_rad(p, size=10)
-            # print(kurtosis_estimator(x))
-            # rademacher
-            # x = 2 * bernouilli - 1
+            x = special_rad(p, size=n)
 
             # # Estimator MSE var
             var_x = np.var(x, ddof=1)
@@ -98,7 +92,7 @@ if __name__ == '__main__':
         dico[p].append(MSE_VAR_BAG)
     kurts = list(map(lambda p: kurt_special_rad(p), list(dico.keys())))
 
-    with open(f'res_special_rad_{SAMPLE_2}.txt', 'w') as f:
+    with open(f'res_special_rad__1/12_trials={SAMPLE_2}_N={N}_n={n}.txt', 'w') as f:
         for i, (key, val) in enumerate(dico.items()):
             f.write(str(kurts[i]) + '|' + str(val[0]) + '|' + str(val[1]) + '\n')
         f.close()
