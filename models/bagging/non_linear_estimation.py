@@ -10,7 +10,7 @@ if __name__ == '__main__':
         data = pd.read_csv('/home/charles/Desktop/bagging_research_/models/bagging/rademacher_dist.csv')
         x, y1, y2 = data['x'], data['y'], None
     else:
-        data = open('/Users/charlesdognin/Desktop/bagging_research_/results_mse_other|2|1000|10|2000.txt',
+        data = open('/Users/charlesdognin/Desktop/bagging_research_/results_mse_def|0.5|500|5|1000.txt',
                     'r').readlines()
         x, y1, y2 = [int(el.split('|')[0]) for el in data[1:]][:82], \
                     [float(el.split('|')[1]) for el in data[1:]][:82], float(data[0].split('|')[1])
@@ -46,7 +46,7 @@ if __name__ == '__main__':
     ax.plot(x, fittedData, linestyle='-', color='#900000', label="fit with ({0:0.2g},{1:0.2g})".format(*popt))
 
     ###beautification
-    ax.legend(loc=0, title=r'$\sigma=2 \quad X \in R^{2000, 10}$', fontsize=12)
+    ax.legend(loc=0, title=r'$\sigma=0.5 \quad X \in R^{1000, 5}$', fontsize=12)
     ax.set_ylabel("MSE")
     ax.set_xlabel("N")
     ax.grid()

@@ -31,36 +31,9 @@ def bagging(x, y):
     return x, y
 
 
-if __name__ == "__main__":
-    from tqdm import tqdm
-    from collections import defaultdict
-    parser = argparse.ArgumentParser(description='TLBiLSTM network')
-    # parser.add_argument('--seed', type=int, default=0)
-    parser.add_argument('--noise', type=float, default=0.5)
-    parser.add_argument('--ds', type=str, default='def', help="Dataset")
-    parser.add_argument('--n_feats', type=int, default=2, help="num features")
-    parser.add_argument('--n_average', type=int, default=50, help="Number or average")
-    parser.add_argument('--n_samples', type=int, default=100, help="NUmber of samples")
-    parser.add_argument('--n_train_iter', type=int, default=5, help="Number of train/test loop")
-
-    args = parser.parse_args()
-    print("\n" + "Arguments are: " + "\n")
-    print(args)
-
-
-    # Loading datasets
-
-    if args.ds == 'boston':
-        X, y = load_boston()['data'], load_boston()['target']
-    elif args.ds == 'diabetes':
-        X, y = load_diabetes()['data'], load_diabetes()['target']
-    elif args.ds == 'cali':
-        X, y = fetch_california_housing()['data'], fetch_california_housing()['target']
-    else:
-        X, y = make_regression(n_samples=args.n_samples, n_features=args.n_feats, noise=args.noise, random_state=0)
-
+def xp_1():
     dico = defaultdict(list)
-    for itr_train in tqdm(range(args.n_train_iter)):
+    for itr_train in range(args.n_train_iter):
         x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.95, random_state=itr_train)
         print(len(x_train), len(x_test))
 
@@ -80,7 +53,7 @@ if __name__ == "__main__":
             mean_mse_wob.append(mse)
         dico[0].append(np.mean(mean_mse_wob))
 
-        for N in tqdm(range(5, 100)):
+        for N in range(1, args.N + 1):
             mean_mse = []
             for i in range(args.n_average):
                 predictions = []
@@ -99,7 +72,42 @@ if __name__ == "__main__":
                 mean_mse.append(mse)
 
             dico[N].append(np.mean(mean_mse))
+    return dico
 
+
+if __name__ == "__main__":
+    from tqdm import tqdm
+    from collections import defaultdict
+    import time
+
+    parser = argparse.ArgumentParser(description='TLBiLSTM network')
+    # parser.add_argument('--seed', type=int, default=0)
+    parser.add_argument('--noise', type=float, default=0.5)
+    parser.add_argument('--ds', type=str, default='def', help="Dataset")
+    parser.add_argument('--n_feats', type=int, default=5, help="num features")
+    parser.add_argument('--n_average', type=int, default=50, help="Number or average")
+    parser.add_argument('--n_samples', type=int, default=1000, help="NUmber of samples")
+    parser.add_argument('--n_train_iter', type=int, default=10, help="Number of train/test loop")
+    parser.add_argument('--N', type=int, default=10, help="Number of train/test loop")
+
+    args = parser.parse_args()
+    print("\n" + "Arguments are: " + "\n")
+    print(args)
+
+    # Loading datasets
+
+    if args.ds == 'boston':
+        X, y = load_boston()['data'], load_boston()['target']
+    elif args.ds == 'diabetes':
+        X, y = load_diabetes()['data'], load_diabetes()['target']
+    elif args.ds == 'cali':
+        X, y = fetch_california_housing()['data'], fetch_california_housing()['target']
+    else:
+        X, y = make_regression(n_samples=args.n_samples, n_features=args.n_feats, noise=args.noise, random_state=0)
+    start = time.time()
+    dico = xp_1()
+    end = time.time()
+    print(str(end - start) + ' seconds')
     print('finish')
     with open(f'results_mse_{args.ds}|{args.noise}|{args.n_average}|{args.n_feats}|{args.n_samples}.txt', 'w') as f:
         for key, value in dico.items():
