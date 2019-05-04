@@ -56,7 +56,7 @@ def xp_1(X, y, n_train_iter, n_average, num_N):
     array_wob = np.empty((1, n_train_iter))
     array_wb = np.empty((num_N, n_train_iter))
     for itr_train in range(n_train_iter):
-        x_train, x_test, y_train, y_test = train_test_split_np(X, y, test_size=0.5, random_state=itr_train)
+        x_train, x_test, y_train, y_test = train_test_split_np(X, y, test_size=0.95, random_state=itr_train)
         print(len(x_train), len(x_test))
         assert len(x_train) == len(y_train) and len(x_test) == len(y_test)
 
