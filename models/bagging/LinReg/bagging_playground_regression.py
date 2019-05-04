@@ -38,20 +38,17 @@ def xp_1():
         print(len(x_train), len(x_test))
 
         # Without Bagging
-        mean_mse_wob = []
-        for i in range(args.n_average):
-            predictions = []
-            reg = LinearRegression()
-            reg.fit(x_train, y_train)
-            predictions.append(reg.predict(x_test))
-            predictions = np.array(predictions)
+        predictions = []
+        reg = LinearRegression()
+        reg.fit(x_train, y_train)
+        predictions.append(reg.predict(x_test))
+        predictions = np.array(predictions)
 
-            # Testing
-            final_pred_ = np.mean(predictions, axis=0)
-            assert len(final_pred_) == len(y_test)
-            mse = mean_squared_error(y_test, final_pred_)
-            mean_mse_wob.append(mse)
-        dico[0].append(np.mean(mean_mse_wob))
+        # Testing
+        final_pred_ = np.mean(predictions, axis=0)
+        assert len(final_pred_) == len(y_test)
+        mse = mean_squared_error(y_test, final_pred_)
+        dico[0].append(mse)
 
         for N in range(1, args.N + 1):
             mean_mse = []
