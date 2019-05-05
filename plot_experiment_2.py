@@ -1,17 +1,11 @@
 if __name__ == '__main__':
-    import pandas as pd
-    csv = False
-
-    if csv:
-        data = pd.read_csv('/home/charles/Desktop/bagging_research_/models/bagging/rademacher_dist.csv')
-        x, y1 = data['x'], data['y']
-    else:
-        data = open('/Users/charlesdognin/Desktop/bagging_research_/results_mse_cali|0.5|400|2|1000.txt', 'r').readlines()
-
-
     import matplotlib.pyplot as plt
     import numpy as np
 
+    data = open('/Users/charlesdognin/Desktop/bagging_research_/results_mse_cali|0.5|400|2|1000.txt', 'r').readlines()
+
+    x = 0
+    y1 = 0
     ###preparing the figure
     fig1 = plt.figure(1)
     ax=fig1.add_subplot(1,1,1)

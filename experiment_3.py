@@ -81,7 +81,7 @@ def xp_2(n_trials, n, N, a):
 
 if __name__ == '__main__':
     from tqdm import tqdm
-    from models.plot_experiment_3 import plot_kurt
+    from plot_experiment_3 import plot_kurt
     import argparse
     parser = argparse.ArgumentParser(description='TLBiLSTM network')
     # parser.add_argument('--seed', type=int, default=0)

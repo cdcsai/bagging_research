@@ -49,7 +49,7 @@ def LinReg_np_fit_predict(x_train, y_train, x_test):
 
 
 @njit(fastmath=True, parallel=True)
-def xp_1(X, y, n_train_iter, n_average, num_N):
+def experiment_1(X, y, n_train_iter, n_average, num_N):
     array_wob = np.empty((1, n_train_iter))
     array_wb = np.empty((num_N, n_train_iter))
     for itr_train in range(n_train_iter):
@@ -113,7 +113,7 @@ if __name__ == "__main__":
     else:
         X, y = make_regression(n_samples=args.n_samples, n_features=args.n_feats, noise=args.noise, random_state=0)
     start = time.time()
-    array_wob, array_wb = xp_1(X, y, args.n_train_iter, args.n_average, args.N)
+    array_wob, array_wb = experiment_1(X, y, args.n_train_iter, args.n_average, args.N)
     end = time.time()
     print(str(end - start) + ' seconds')
     print('finish')
