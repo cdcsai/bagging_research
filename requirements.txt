@@ -1,4 +1,6 @@
 cycler==0.10.0
+icc-rt==2019.0
+intel-openmp==2019.0
 kiwisolver==1.1.0
 llvmlite==0.28.0
 matplotlib==3.0.3
