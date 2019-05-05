@@ -1,52 +1,34 @@
 import numpy as np
-from scipy import stats
 from numba import njit
+from utils import rv_discrete
 
 
-def special_rad(p, size=1000):
+def special_rad(p, a, size=1000):
     assert 0 <= p <= 1
-    xk = np.array([-1, 1,  np.sqrt(1 / 16), -np.sqrt(1 / 16)])
+    xk = np.array([-1, 1,  np.sqrt(a), -np.sqrt(a)])
     pk = (p / 2, p / 2, (1 - p) / 2, (1 - p) / 2)
-    custm = stats.rv_discrete(name='special_rad', values=(xk, pk))
+    custm = rv_discrete(name='special_rad', values=(xk, pk))
     return custm.rvs(size=size)
-
-
-def mean_estimator(sample=1000):
-    x = np.random.gamma(size=sample)
-    # y = (x - 1)**2
-    return np.mean(x)
-
-
-def y_2nd_moment_estimator(sample=1000):
-    x = np.random.uniform(size=sample)
-    y = (x - 0.5) ** 2
-    return np.mean(y**2)
-
-
-def sharpe_ratio_estimator(sample=1000):
-    x = np.random.exponential(size=sample)
-    y = (x - 0.2) ** 2
-    sharpe_estimator = (np.mean(y) ** 2) / np.var(y, ddof=1)
-    return sharpe_estimator
 
 
 def kurtosis_estimator(x):
     mu_4 = np.mean(x**4)
-    var_2 = np.var(x)**2
+    var_2 = np.var(x, ddof=1)**2
     kurtosis = mu_4 / var_2
     return kurtosis
 
 
 @njit(fastmath=True, parallel=True)
-def true_var(p):
+def true_var(p, a):
     assert 0 <= p <= 1
-    return (1 / 8)*(1 - p) + p
+    return p + a*(1 - p)
 
 
-def kurt_special_rad(p):
+@njit(fastmath=True, parallel=True)
+def kurt_special_rad(p, a):
     assert 0 <= p <= 1
-    num = p + ((1 - p) / 64)
-    denom = (p + ((1 - p) / 8)) ** 2
+    num = p + (a**2 * (1 - p))
+    denom = (true_var(p, a)) ** 2
     return num / denom
 
 
@@ -58,12 +40,12 @@ def bagging_np(x):
 
 
 @njit(fastmath=True, parallel=True)
-def xp_2():
+def xp_2(n_trials, n, N, a):
     mse_var_array, mse_var_bag_array = np.empty(len(proba_range)), np.empty(len(proba_range))
     for idp in range(len(proba_range)):
         print('loop : #', idp)
-        total_var, total_var_bag = np.empty(SAMPLE_2), np.empty(SAMPLE_2)
-        for i in range(SAMPLE_2):
+        total_var, total_var_bag = np.empty(n_trials), np.empty(n_trials)
+        for i in range(n_trials):
             x = all_rads_sample[idp, i]
             assert len(x) == n
 
@@ -83,8 +65,8 @@ def xp_2():
         EXP_var = np.mean(total_var)
         EXP_var_bag = np.mean(total_var_bag)
 
-        BIAS_sq_var = (EXP_var - true_var(proba_range[idp])) ** 2
-        BIAS_sq_var_bag = (EXP_var_bag - true_var(proba_range[idp])) ** 2
+        BIAS_sq_var = (EXP_var - true_var(proba_range[idp], a)) ** 2
+        BIAS_sq_var_bag = (EXP_var_bag - true_var(proba_range[idp], a)) ** 2
 
         VAR_VAR_bag = (len(total_var_bag) / (len(total_var_bag) - 1)) * np.var(total_var_bag)
         VAR_VAR = (len(total_var_bag) / (len(total_var_bag) - 1)) * np.var(total_var)
@@ -99,25 +81,35 @@ def xp_2():
 
 if __name__ == '__main__':
     from tqdm import tqdm
+    from models.plot_experiment_3 import plot_kurt
+    import argparse
+    parser = argparse.ArgumentParser(description='TLBiLSTM network')
+    # parser.add_argument('--seed', type=int, default=0)
+    parser.add_argument('--n_trials', type=int, default=1000, help="num trials")
+    parser.add_argument('--n', type=int, default=10, help="Sample Size")
+    parser.add_argument('--N', type=int, default=100, help="Number of bagged estimators")
+    parser.add_argument('--a', type=float, default=(1 / 16), help="a parameter in special rademacher distribution")
 
-    SAMPLE_2 = 10000
-    N = 100
-    n = 10
+    args = parser.parse_args()
+    print("\n" + "Arguments are: " + "\n")
+    print(args)
+
     proba_range = np.arange(0.05, 0.95, 0.05)
-
-    all_rads_sample = np.empty((len(proba_range), SAMPLE_2, n))
+    all_rads_sample = np.empty((len(proba_range), args.n_trials, args.n))
     for enum, prob in tqdm(enumerate(proba_range)):
-        for samp in range(SAMPLE_2):
-            x = special_rad(prob, size=n)
+        for samp in range(args.n_trials):
+            x = special_rad(prob, a=args.a, size=args.n)
             all_rads_sample[enum, samp] = x
 
-    mse_var_array_fin, mse_var_bag_array_fin = xp_2()
-    kurts = [kurt_special_rad(p) for p in proba_range]
+    mse_var_array_fin, mse_var_bag_array_fin = xp_2(n_trials=args.n_trials, n=args.n, N=args.N, a=args.a)
+    kurts = [kurt_special_rad(p, args.a) for p in proba_range]
     assert len(kurts) == len(mse_var_array_fin) == len(mse_var_bag_array_fin)
+    path = f'res_special_rad__a={args.a}_trials={args.n_trials}_N={args.N}_n={args.n}.txt'
 
-    with open(f'res_special_rad__1over12_trials={SAMPLE_2}_N={N}_n={n}.txt', 'w') as f:
-        for kurt, mse_var, mse_var_bag in zip(kurts, mse_var_array_fin, mse_var_bag_array_fin):
+    with open(path, 'w') as f:
+        for kurt, mse_var, mse_var_bag in zip(kurts[1:], mse_var_array_fin[1:], mse_var_bag_array_fin[1:]):
             f.write(str(kurt) + '|' + str(mse_var) + '|' + str(mse_var_bag) + '\n')
         f.close()
 
     print('done')
+    plot_kurt(path)

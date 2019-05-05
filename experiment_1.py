@@ -53,7 +53,7 @@ def xp_1(X, y, n_train_iter, n_average, num_N):
     array_wob = np.empty((1, n_train_iter))
     array_wb = np.empty((num_N, n_train_iter))
     for itr_train in range(n_train_iter):
-        x_train, x_test, y_train, y_test = train_test_split_np(X, y, test_size=0.95, random_state=itr_train)
+        x_train, x_test, y_train, y_test = train_test_split_np(X, y, test_size=0.5, random_state=itr_train)
         print(len(x_train), len(x_test))
         assert len(x_train) == len(y_train) and len(x_test) == len(y_test)
 
@@ -93,7 +93,7 @@ if __name__ == "__main__":
     parser.add_argument('--ds', type=str, default='def', help="Dataset")
     parser.add_argument('--n_feats', type=int, default=5, help="num features")
     parser.add_argument('--n_average', type=int, default=50, help="Number or average")
-    parser.add_argument('--n_samples', type=int, default=50, help="NUmber of samples")
+    parser.add_argument('--n_samples', type=int, default=100, help="NUmber of samples")
     parser.add_argument('--n_train_iter', type=int, default=10, help="Number of train/test loop")
     parser.add_argument('--N', type=int, default=200, help="Number of train/test loop")
 
@@ -119,6 +119,6 @@ if __name__ == "__main__":
     print('finish')
     with open(f'results_mse_{args.ds}|{args.noise}|{args.n_average}|{args.n_feats}|{args.n_samples}.txt', 'w') as f:
         f.write(str(0) + '|' + str(np.mean(array_wob)) + '\n')
-        for i, el in zip(range(1, 99), array_wb):
+        for i, el in zip(range(1, len(array_wb)), array_wb):
             f.write(str(i) + '|' + str(np.mean(el)) + '\n')
         f.close()

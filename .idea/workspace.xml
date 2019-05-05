@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="66e170b2-87b7-4ea6-80df-ba48ee562929" name="Default Changelist" comment="Reorganization">
-      <change afterPath="$PROJECT_DIR$/models/kurtosis_optimized.py" afterDir="false" />
+    <list default="true" id="66e170b2-87b7-4ea6-80df-ba48ee562929" name="Default Changelist" comment="adding kurtosis optimized">
+      <change afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/kurtosis.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/kurtosis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/plot_kurtosis.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/plot_kurtosis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/bagging_playground_regression.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/bagging_xp_1_optimized.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment_1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/kurtosis.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/kurtosis_optimized.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment_3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/monte_carlo.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/monte_carlo_bagging_wo_sub.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment_2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/non_linear_estimation.py" beforeDir="false" afterPath="$PROJECT_DIR$/plot_experiment_1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/plot_bagging.py" beforeDir="false" afterPath="$PROJECT_DIR$/plot_experiment_2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/plot_kurtosis.py" beforeDir="false" afterPath="$PROJECT_DIR$/plot_experiment_3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/testing_stability_linreg.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment_stability.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/xp.sh" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,15 +24,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/bagging_research_$plot_kurtosis.coverage" NAME="plot_kurtosis Coverage Results" MODIFIED="1557005942452" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
-    <SUITE FILE_PATH="coverage/bagging_research_$mc_unirofm.coverage" NAME="mc_unirofm Coverage Results" MODIFIED="1555279316183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models/bagging" />
+    <SUITE FILE_PATH="coverage/bagging_research_$Doctests_in_utils.coverage" NAME="Doctests in utils Coverage Results" MODIFIED="1557074591628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
+    <SUITE FILE_PATH="coverage/bagging_research_$plot_kurtosis.coverage" NAME="plot_kurtosis Coverage Results" MODIFIED="1557078445088" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/bagging_research_$monte_carlo_bagging_wo_sub.coverage" NAME="monte_carlo_bagging_wo_sub Coverage Results" MODIFIED="1555278158674" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models/bagging" />
+    <SUITE FILE_PATH="coverage/bagging_research_$non_linear_estimation.coverage" NAME="non_linear_estimation Coverage Results" MODIFIED="1557073923312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
+    <SUITE FILE_PATH="coverage/bagging_research_$testing_stability_linreg.coverage" NAME="testing_stability_linreg Coverage Results" MODIFIED="1554418468538" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models/bagging/LinReg" />
+    <SUITE FILE_PATH="coverage/bagging_research_$bagging_xp_1_optimized__1_.coverage" NAME="bagging_xp_1_optimized (1) Coverage Results" MODIFIED="1557067238732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
+    <SUITE FILE_PATH="coverage/bagging_research_$mc_unirofm.coverage" NAME="mc_unirofm Coverage Results" MODIFIED="1555279316183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models/bagging" />
     <SUITE FILE_PATH="coverage/bagging_research_$bagging_xp_1_optimized.coverage" NAME="bagging_xp_1_optimized Coverage Results" MODIFIED="1556997969457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models/bagging/LinReg" />
-    <SUITE FILE_PATH="coverage/bagging_research_$kurtosis_optimized.coverage" NAME="kurtosis_optimized Coverage Results" MODIFIED="1557006021832" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
-    <SUITE FILE_PATH="coverage/bagging_research_$non_linear_estimation.coverage" NAME="non_linear_estimation Coverage Results" MODIFIED="1556585921829" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models/bagging" />
+    <SUITE FILE_PATH="coverage/bagging_research_$kurtosis_optimized.coverage" NAME="kurtosis_optimized Coverage Results" MODIFIED="1557077673238" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
     <SUITE FILE_PATH="coverage/bagging_research_$bagging_playground_regression.coverage" NAME="bagging_playground_regression Coverage Results" MODIFIED="1556997469071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models/bagging/LinReg" />
     <SUITE FILE_PATH="coverage/bagging_research_$bagging_train_test_logreg.coverage" NAME="bagging_train_test_logreg Coverage Results" MODIFIED="1555260887287" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models/bagging/LogReg" />
-    <SUITE FILE_PATH="coverage/bagging_research_$testing_stability_linreg.coverage" NAME="testing_stability_linreg Coverage Results" MODIFIED="1554418468538" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models/bagging/LinReg" />
     <SUITE FILE_PATH="coverage/bagging_research_$plot_bagging.coverage" NAME="plot_bagging Coverage Results" MODIFIED="1555363428007" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models/bagging" />
     <SUITE FILE_PATH="coverage/bagging_research_$kurtosis.coverage" NAME="kurtosis Coverage Results" MODIFIED="1557000293603" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
   </component>
@@ -42,35 +54,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/kurtosis.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/models/kurtosis_optimized.py">
+        <entry file="file://$PROJECT_DIR$/plot_experiment_3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="100" column="25" lean-forward="true" selection-start-line="100" selection-start-column="25" selection-end-line="100" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/plot_kurtosis.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="450">
+              <caret line="30" column="14" lean-forward="true" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -88,6 +76,8 @@
     <findStrings>
       <find>bernou</find>
       <find>predict</find>
+      <find>distdiscrete</find>
+      <find>rvs</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -109,16 +99,24 @@
         <option value="$PROJECT_DIR$/models/bagging/LinReg/xp.sh" />
         <option value="$PROJECT_DIR$/models/bagging/LinReg/bagging_xp_1_optimized.py" />
         <option value="$PROJECT_DIR$/models/kurtosis.py" />
+        <option value="$PROJECT_DIR$/models/xp_kurt.sh" />
+        <option value="$PROJECT_DIR$/models/plot_bagging.py" />
+        <option value="$PROJECT_DIR$/models/bagging_xp_1_optimized.py" />
+        <option value="$PROJECT_DIR$/models/non_linear_estimation.py" />
+        <option value="$PROJECT_DIR$/models/utils.py" />
+        <option value="$PROJECT_DIR$/utils.py" />
+        <option value="$PROJECT_DIR$/models/res_special_rad__a=0.0625_trials=100_N=100_n=10.txt" />
+        <option value="$PROJECT_DIR$/models/res_special_rad__a=0.08333333333333333_trials=1000_N=100_n=10.txt" />
         <option value="$PROJECT_DIR$/models/plot_kurtosis.py" />
         <option value="$PROJECT_DIR$/models/kurtosis_optimized.py" />
+        <option value="$PROJECT_DIR$/models/experiment_3.py" />
+        <option value="$PROJECT_DIR$/plot_experiment_3.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="116" />
-    <option name="y" value="111" />
     <option name="width" value="1440" />
-    <option name="height" value="877" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -130,12 +128,7 @@
           <expand>
             <path>
               <item name="bagging_research_" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bagging_research_" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bagging_research_" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bagging_research_" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
@@ -154,8 +147,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/models/bagging/old_results" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/models/bagging/old_results" />
       <recent name="$PROJECT_DIR$/old_results" />
       <recent name="$PROJECT_DIR$/models/bagging/LinReg" />
     </key>
@@ -172,8 +165,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.kurtosis_optimized">
-    <configuration name="bagging_playground_regression" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.plot_kurtosis">
+    <configuration name="bagging_xp_1_optimized (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="bagging_research_" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -181,56 +174,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/models/bagging/LinReg" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/models/bagging/LinReg/bagging_playground_regression.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="bagging_xp_1_optimized" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="bagging_research_" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/models/bagging/LinReg" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/models/bagging/LinReg/bagging_xp_1_optimized.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="kurtosis" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="bagging_research_" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/models" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/models/kurtosis.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/experiment_1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -247,12 +196,34 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/models" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/models/kurtosis_optimized.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/experiment_3.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="non_linear_estimation" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="bagging_research_" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/plot_experiment_1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -269,12 +240,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/models" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/models/plot_kurtosis.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/plot_experiment_3.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -283,20 +254,39 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Doctests in utils" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
+      <module name="bagging_research_" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/utils.py" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Python.bagging_playground_regression" />
-      <item itemvalue="Python.bagging_xp_1_optimized" />
-      <item itemvalue="Python.kurtosis" />
       <item itemvalue="Python.kurtosis_optimized" />
       <item itemvalue="Python.plot_kurtosis" />
+      <item itemvalue="Python.non_linear_estimation" />
+      <item itemvalue="Python.bagging_xp_1_optimized (1)" />
+      <item itemvalue="Python tests.Doctests in utils" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.kurtosis_optimized" />
         <item itemvalue="Python.plot_kurtosis" />
-        <item itemvalue="Python.kurtosis" />
-        <item itemvalue="Python.bagging_xp_1_optimized" />
-        <item itemvalue="Python.bagging_playground_regression" />
+        <item itemvalue="Python.kurtosis_optimized" />
+        <item itemvalue="Python tests.Doctests in utils" />
+        <item itemvalue="Python.non_linear_estimation" />
+        <item itemvalue="Python.bagging_xp_1_optimized (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -314,7 +304,8 @@
       <workItem from="1555851087556" duration="11411000" />
       <workItem from="1556469098690" duration="4638000" />
       <workItem from="1556798878054" duration="342000" />
-      <workItem from="1556907748777" duration="28086000" />
+      <workItem from="1556907748777" duration="29456000" />
+      <workItem from="1557065519036" duration="8455000" />
     </task>
     <task id="LOCAL-00001" summary="Updated stability XP">
       <created>1554154934492</created>
@@ -407,11 +398,26 @@
       <option name="project" value="LOCAL" />
       <updated>1556999533573</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="adding kurtosis optimized">
+      <created>1557006187657</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1557006187657</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="Doctests_in_utils - 2019.05.05 at 12h 43m 00s.xml">
+      <configuration name="Doctests in utils" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Doctests_in_utils - 2019.05.05 at 12h 43m 12s.xml">
+      <configuration name="Doctests in utils" configurationId="tests" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46054000" />
+    <option name="totallyTimeSpent" value="55879000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -424,15 +430,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10801145" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24320458" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3952912" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4448575" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.133829" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4039653" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3294979" />
@@ -440,14 +445,14 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="11" weight="0.38909543" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.17224288" />
+      <window_info anchor="bottom" id="Python Console" order="11" weight="0.2701363" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.28872368" />
       <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.32961586" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Remote Host" order="3" />
-      <window_info anchor="right" id="SciView" order="4" weight="0.28040057" />
+      <window_info anchor="right" id="SciView" order="4" weight="0.30829757" />
       <window_info anchor="right" id="Database" order="5" weight="0.32946378" />
     </layout>
   </component>
@@ -462,22 +467,11 @@
     <MESSAGE value="adding numba optimized code" />
     <MESSAGE value="changing xp, fix bagging playground" />
     <MESSAGE value="Reorganization" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reorganization" />
+    <MESSAGE value="adding kurtosis optimized" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding kurtosis optimized" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/models/kurtosis.py</url>
-          <line>78</line>
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/models/plot_kurtosis.py</url>
-          <line>13</line>
-          <option name="timeStamp" value="52" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -488,81 +482,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/models/bagging/LinReg/results_mse_boston.txt" />
-    <entry file="file://$PROJECT_DIR$/old_results/results_mse_boston.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/results_mse_cali|0.5|5|2|1000.txt" />
-    <entry file="file://$PROJECT_DIR$/results_mse_cali|0.5|200|2|1000.txt" />
-    <entry file="file://$PROJECT_DIR$/results_mse_diabetes.txt" />
-    <entry file="file://$PROJECT_DIR$/results_mse_cali|0.5|400|2|1000.txt" />
-    <entry file="file://$PROJECT_DIR$/old_results/results_mse_other|0.5|1000|2|1000.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-926" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old_results/results_mse_other|0.5|1000|5|1000.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old_results/results_mse_other|2|1000|10|1000.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-926" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/bagging/LinReg/non_lin_reg_new.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-867" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/bagging/LinReg/res_stability.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/bagging/LinReg/bagging_train_test_LinReg.py" />
-    <entry file="file://$PROJECT_DIR$/models/bagging/LinReg/non_lin_reg_2.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4242" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old_results/results_mse_cali|0.5|100|2|1000.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1365">
-          <caret line="91" column="19" lean-forward="true" selection-start-line="91" selection-start-column="19" selection-end-line="91" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/bagging/plot_bagging.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="122" lean-forward="true" selection-start-line="2" selection-start-column="4" selection-end-line="8" selection-end-column="122" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/bagging/NLP_BiLSTM/bagging_train_nlp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1134" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/scipy/_lib/_util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="173" column="4" selection-start-line="173" selection-start-column="4" selection-end-line="173" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/scipy/stats/_distn_infrastructure.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="595" column="36" lean-forward="true" selection-start-line="595" selection-start-column="36" selection-end-line="595" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Caches/PyCharm2018.3/python_stubs/1599371832/numpy/random/mtrand.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="3539" column="8" selection-start-line="3539" selection-start-column="8" selection-end-line="3539" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/scipy/stats/_discrete_distns.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
@@ -571,16 +490,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/bagging/LinReg/results_mse_def|0.5|500|2|1000.txt" />
-    <entry file="file://$PROJECT_DIR$/results_mse_def|0.5|500|2|1000.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/results_mse_def|0.5|500|2|1000.txt" />
     <entry file="file://$PROJECT_DIR$/res_stability.txt" />
-    <entry file="file://$PROJECT_DIR$/results_mse_def|2.0|500|10|1000.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/results_mse_def-2.0-500-10-2000.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/results_mse_def|2.0|500|10|1000.txt" />
+    <entry file="file://$PROJECT_DIR$/results_mse_def-2.0-500-10-2000.txt" />
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/sklearn/datasets/samples_generator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6675">
@@ -595,9 +508,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/results_mse_def|0.5|500|5|1000.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/results_mse_def|0.5|500|5|1000.txt" />
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/sklearn/utils/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="101">
@@ -633,88 +544,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/bagging/non_linear_estimation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/bagging/LinReg/results_mse_def|0.5|50|2|1000.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/bagging/LinReg/results_mse_def|4|50|5|100.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/bagging/LinReg/results_mse_def|0.5|50|5|1000.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/bagging/LinReg/bagging_playground_regression.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
-          <folding>
-            <element signature="e#29#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/bagging/LinReg/results_mse_def|3|50|5|50.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-793" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/bagging/LinReg/xp.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/bagging/LinReg/bagging_xp_1_optimized.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="19" selection-start-line="6" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiment_1.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="14" selection-start-column="14" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/monte_carlo_bagging_wo_sub.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="21" lean-forward="true" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/bagging/monte_carlo_bagging_wo_sub.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
-          <caret line="81" selection-start-line="81" selection-end-line="81" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/bagging_xp_1_optimized.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/models/bagging/non_linear_estimation.py" />
+    <entry file="file://$PROJECT_DIR$/models/bagging/LinReg/results_mse_def|0.5|50|2|1000.txt" />
+    <entry file="file://$PROJECT_DIR$/models/bagging/LinReg/results_mse_def|4|50|5|100.txt" />
+    <entry file="file://$PROJECT_DIR$/models/bagging/LinReg/results_mse_def|0.5|50|5|1000.txt" />
+    <entry file="file://$PROJECT_DIR$/models/bagging/LinReg/bagging_playground_regression.py" />
+    <entry file="file://$PROJECT_DIR$/models/bagging/LinReg/results_mse_def|3|50|5|50.txt" />
+    <entry file="file://$PROJECT_DIR$/models/bagging/LinReg/xp.sh" />
+    <entry file="file://$PROJECT_DIR$/models/bagging/LinReg/bagging_xp_1_optimized.py" />
+    <entry file="file://$PROJECT_DIR$/experiment_1.sh" />
+    <entry file="file://$PROJECT_DIR$/models/bagging/monte_carlo_bagging_wo_sub.py" />
     <entry file="file://$PROJECT_DIR$/models/res_special_rad__1over12_trials=10_N=500_n=10.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -724,30 +563,161 @@
     <entry file="file://$PROJECT_DIR$/models/res_special_rad__1over12_trials=1000_N=50_n=10.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/plot_kurtosis.py">
+    <entry file="file://$PROJECT_DIR$/models/res_special_rad__1over12_trials=10_N=20_n=50.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/xp.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="75">
+          <caret line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results_mse_def|2.0|100|5|1000.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results_mse_def|5.0|100|10|1000.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results_mse_def|5.0|100|2|1000.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results_mse_def|3.0|100|2|1000.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/xp_kurt.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results_mse_boston|1.0|100|2|1000.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-967" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plot_experiment_1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiment_stability.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/scipy/stats/_distr_params.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1905">
+          <caret line="127" column="21" lean-forward="true" selection-end-line="130" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/scipy/stats/_distn_infrastructure.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="16" column="11" lean-forward="true" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1522">
+          <caret line="2139" lean-forward="true" selection-start-line="2139" selection-end-line="2139" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/res_special_rad__a=0.0625_trials=100_N=100_n=10.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plot_experiment_2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/kurtosis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+        <state relative-caret-position="-368">
+          <caret line="43" selection-start-line="43" selection-end-line="46" selection-end-column="22" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/kurtosis_optimized.py">
+    <entry file="file://$PROJECT_DIR$/experiment_2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="100" column="25" lean-forward="true" selection-start-line="100" selection-start-column="25" selection-end-line="100" selection-end-column="25" />
+        <state relative-caret-position="2">
+          <caret line="37" column="21" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiment_3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="84" column="19" selection-start-line="84" selection-start-column="19" selection-end-line="84" selection-end-column="19" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/monte_carlo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor>
+            <caret column="55" lean-forward="true" selection-start-column="55" selection-end-column="55" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiment_1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="100" column="42" lean-forward="true" selection-start-line="100" selection-start-column="42" selection-end-line="100" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res_special_rad__a=0.08333333333333333_trials=1000_N=100_n=10.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plot_experiment_3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="14" lean-forward="true" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
         </state>
       </provider>
     </entry>
