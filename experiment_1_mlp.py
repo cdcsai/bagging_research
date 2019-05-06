@@ -53,9 +53,8 @@ def LinReg_np_fit_predict(x_train, y_train, x_test):
 def experiment_1(X, y, n_train_iter, n_average, num_N, test_size=0.95):
     array_wob = np.empty((1, n_train_iter))
     array_wb = np.empty((num_N, n_train_iter))
-    mlp = MLPRegressor(hidden_layer_sizes=(10, 1), activation='relu', solver='adam')
+    mlp = MLP()
     for itr_train in tqdm(range(n_train_iter)):
-        print('loop #: ', itr_train)
         x_train, x_test, y_train, y_test = train_test_split_np(X, y, test_size=test_size, random_state=itr_train)
         print(len(x_train), len(x_test))
         assert len(x_train) == len(y_train) and len(x_test) == len(y_test)
@@ -71,7 +70,7 @@ def experiment_1(X, y, n_train_iter, n_average, num_N, test_size=0.95):
 
         # With Bagging
 
-        for N in range(1, num_N + 1):
+        for N in tqdm(range(1, num_N + 1)):
             mean_mse = np.empty(n_average)
             for j in range(n_average):
                 predictions = np.empty((N, len(x_test)))
@@ -80,7 +79,7 @@ def experiment_1(X, y, n_train_iter, n_average, num_N, test_size=0.95):
                     assert len(x_train_b) == len(y_train_b)
                     mlp.fit(x_train_b, y_train_b)
                     pred = mlp.predict(x_test)
-                    predictions[tr] = pred
+                    predictions[tr] = np.squeeze(pred)
 
                 # Testing
                 final_pred_ = np.array([np.mean(predictions[:, p]) for p in range(len(x_test))])
@@ -92,20 +91,18 @@ def experiment_1(X, y, n_train_iter, n_average, num_N, test_size=0.95):
 
 
 if __name__ == "__main__":
-    from sklearn.exceptions import ConvergenceWarning
-    import warnings
-    warnings.filterwarnings(action='ignore', category=ConvergenceWarning)
+    from mlp import MLP
 
     parser = argparse.ArgumentParser(description='Arguments Experiment 1')
     # parser.add_argument('--seed', type=int, default=0)
     parser.add_argument('--noise', type=float, default=5)
     parser.add_argument('--ds', type=str, default='def', help="Dataset")
-    parser.add_argument('--n_feats', type=int, default=2, help="num features")
+    parser.add_argument('--n_feats', type=int, default=10, help="num features")
     parser.add_argument('--n_average', type=int, default=50, help="Number or average")
-    parser.add_argument('--n_samples', type=int, default=1000, help="NUmber of samples")
-    parser.add_argument('--n_train_iter', type=int, default=10, help="Number of train/test loop")
-    parser.add_argument('--N', type=int, default=50, help="Number of train/test loop")
-    parser.add_argument('--test_size', type=float, default=0.5, help="TestSize")
+    parser.add_argument('--n_samples', type=int, default=2000, help="NUmber of samples")
+    parser.add_argument('--n_train_iter', type=int, default=5, help="Number of train/test loop")
+    parser.add_argument('--N', type=int, default=10, help="Number of train/test loop")
+    parser.add_argument('--test_size', type=float, default=0.1, help="TestSize")
 
     args = parser.parse_args()
     print("\n" + "Arguments are: " + "\n")
