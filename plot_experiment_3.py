@@ -1,16 +1,19 @@
 import matplotlib.pyplot as plt
+import os
 
 
-def plot_kurt(path):
+def plot_kurt(path, save_path):
     data = open(path, 'r').readlines()
     k = [float(el.split('|')[0]) for el in data]
     mse_var = [float(el.split('|')[1]) for el in data]
     mse_var_bag = [float(el.split('|')[2]) for el in data]
 
-    N, n, trials, a = int(path.split('=')[-2].split('_')[0]), \
-                   int(path.split('=')[-1].split('.')[0]), \
-                   int(path.split('=')[-3].split('_')[0]),\
-                      round(float(path.split('=')[-4].split('_')[0]),3)
+    N, n, trials, a = 20, 10, 100000, 0.125
+
+    # N, n, trials, a = int(path.split('=')[-2].split('_')[0]), \
+    #                int(path.split('=')[-1].split('.')[0]), \
+    #                int(path.split('=')[-3].split('_')[0]),\
+    #                   round(float(path.split('=')[-4].split('_')[0]),3)
 
     # preparing the figure
     fig1 = plt.figure(1)
@@ -29,7 +32,8 @@ def plot_kurt(path):
 
     # putting the plot
     plt.show()
+    fig1.savefig(os.path.join(save_path, f'N={N}_n={n}_trials={trials}_a={a}.png'))
 
 
 if __name__ == '__main__':
-    plot_kurt('res_special_rad__a=0.0625_trials=1000_N=100_n=10.txt')
+    plot_kurt('res_special_rad_100000.txt', save_path='plots')
