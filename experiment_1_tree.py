@@ -49,12 +49,11 @@ def LinReg_np_fit_predict(x_train, y_train, x_test):
     return (np.dot(x_test, coefs.reshape(-1, 1)) + intercept).reshape(-1, )
 
 
-
 # @njit(fastmath=True, parallel=True)
 def experiment_1(X, y, n_train_iter, n_average, num_N, test_size=0.95):
     array_wob = np.empty((1, n_train_iter))
     array_wb = np.empty((num_N, n_train_iter))
-    rf = DecisionTreeRegressor()
+    tree = DecisionTreeRegressor()
     for itr_train in tqdm(range(n_train_iter)):
         print('loop #: ', itr_train)
         x_train, x_test, y_train, y_test = train_test_split_np(X, y, test_size=test_size, random_state=itr_train)
@@ -64,11 +63,15 @@ def experiment_1(X, y, n_train_iter, n_average, num_N, test_size=0.95):
         # Without Bagging
 
         # Fit, Predict, MSE
-        rf.fit(x_train, y_train)
-        pred = rf.predict(x_test)
-        assert len(pred) == len(y_test)
-        mse = mean_squared_error_np(y_test, pred)
-        array_wob[:, itr_train] = mse
+        mean_mse = np.empty(n_average)
+        for j in range(n_average):
+            tree.fit(x_train, y_train)
+            pred = tree.predict(x_test)
+            assert len(pred) == len(y_test)
+            mse = mean_squared_error_np(y_test, pred)
+            mean_mse[j] = mse
+
+        array_wob[:, itr_train] = np.mean(mean_mse)
 
         # With Bagging
 
@@ -79,8 +82,8 @@ def experiment_1(X, y, n_train_iter, n_average, num_N, test_size=0.95):
                 for tr in range(N):
                     x_train_b, y_train_b = bagging_np(x_train, y_train)
                     assert len(x_train_b) == len(y_train_b)
-                    rf.fit(x_train_b, y_train_b)
-                    pred = rf.predict(x_test)
+                    tree.fit(x_train_b, y_train_b)
+                    pred = tree.predict(x_test)
                     predictions[tr] = pred
 
                 # Testing

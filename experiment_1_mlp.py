@@ -3,7 +3,6 @@ import argparse
 
 from sklearn.datasets import make_regression
 from sklearn.datasets import load_boston, load_diabetes, fetch_california_housing
-from sklearn.neural_network import MLPRegressor
 
 from numba import njit
 
@@ -62,11 +61,15 @@ def experiment_1(X, y, n_train_iter, n_average, num_N, test_size=0.95):
         # Without Bagging
 
         # Fit, Predict, MSE
-        mlp.fit(x_train, y_train)
-        pred = mlp.predict(x_test)
-        assert len(pred) == len(y_test)
-        mse = mean_squared_error_np(y_test, pred)
-        array_wob[:, itr_train] = mse
+        mean_mse = np.empty(n_average)
+        for j in range(n_average):
+            mlp.fit(x_train, y_train)
+            pred = mlp.predict(x_test)
+            assert len(pred) == len(y_test)
+            mse = mean_squared_error_np(y_test, pred)
+            mean_mse[j] = mse
+
+        array_wob[:, itr_train] = np.mean(mean_mse)
 
         # With Bagging
 

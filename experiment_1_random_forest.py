@@ -64,11 +64,15 @@ def experiment_1(X, y, n_train_iter, n_average, num_N, test_size=0.95):
         # Without Bagging
 
         # Fit, Predict, MSE
-        rf.fit(x_train, y_train)
-        pred = rf.predict(x_test)
-        assert len(pred) == len(y_test)
-        mse = mean_squared_error_np(y_test, pred)
-        array_wob[:, itr_train] = mse
+        mean_mse = np.empty(n_average)
+        for j in range(n_average):
+            rf.fit(x_train, y_train)
+            pred = rf.predict(x_test)
+            assert len(pred) == len(y_test)
+            mse = mean_squared_error_np(y_test, pred)
+            mean_mse[j] = mse
+
+        array_wob[:, itr_train] = np.mean(mean_mse)
 
         # With Bagging
 
