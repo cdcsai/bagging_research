@@ -32,7 +32,7 @@ def plot_kurt(path, save_path):
 
     # putting the plot
     plt.show()
-    fig1.savefig(os.path.join(save_path, f'N={N}_n={n}_trials={trials}_a={a}.png'))
+    fig1.savefig(os.path.join(save_path, f'N={N}_n={n}_trials={trials}_a={str(a)[2:]}.png'))
 
 
 if __name__ == '__main__':
