@@ -103,7 +103,7 @@ if __name__ == "__main__":
     parser.add_argument('--n_feats', type=int, default=10, help="num features")
     parser.add_argument('--n_average', type=int, default=50, help="Number or average")
     parser.add_argument('--n_samples', type=int, default=2000, help="NUmber of samples")
-    parser.add_argument('--n_train_iter', type=int, default=5, help="Number of train/test loop")
+    parser.add_argument('--n_train_iter', type=int, default=2, help="Number of train/test loop")
     parser.add_argument('--N', type=int, default=10, help="Number of train/test loop")
     parser.add_argument('--test_size', type=float, default=0.1, help="TestSize")
 
