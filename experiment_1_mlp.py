@@ -61,15 +61,22 @@ def experiment_1(X, y, n_train_iter, n_average, num_N, test_size=0.95):
         # Without Bagging
 
         # Fit, Predict, MSE
-        mean_mse = np.empty(n_average)
-        for j in range(n_average):
-            mlp.fit(x_train, y_train)
-            pred = mlp.predict(x_test)
-            assert len(pred) == len(y_test)
-            mse = mean_squared_error_np(y_test, pred)
-            mean_mse[j] = mse
+        for N in tqdm(range(1, num_N + 1)):
+            mean_mse = np.empty(n_average)
+            for j in range(n_average):
+                predictions = np.empty((N, len(x_test)))
+                for tr in range(N):
+                    mlp.fit(x_train, y_train)
+                    pred = mlp.predict(x_test)
+                    predictions[tr] = np.squeeze(pred)
 
-        array_wob[:, itr_train] = np.mean(mean_mse)
+                # Testing
+                final_pred_ = np.array([np.mean(predictions[:, p]) for p in range(len(x_test))])
+                assert len(final_pred_) == len(y_test)
+                mse = mean_squared_error_np(y_test, final_pred_)
+                mean_mse[j] = mse
+
+            array_wob[N - 1, itr_train] = np.mean(mean_mse)
 
         # With Bagging
 
@@ -101,9 +108,9 @@ if __name__ == "__main__":
     parser.add_argument('--noise', type=float, default=5)
     parser.add_argument('--ds', type=str, default='def', help="Dataset")
     parser.add_argument('--n_feats', type=int, default=10, help="num features")
-    parser.add_argument('--n_average', type=int, default=50, help="Number or average")
+    parser.add_argument('--n_average', type=int, default=5, help="Number or average")
     parser.add_argument('--n_samples', type=int, default=2000, help="NUmber of samples")
-    parser.add_argument('--n_train_iter', type=int, default=2, help="Number of train/test loop")
+    parser.add_argument('--n_train_iter', type=int, default=1, help="Number of train/test loop")
     parser.add_argument('--N', type=int, default=10, help="Number of train/test loop")
     parser.add_argument('--test_size', type=float, default=0.1, help="TestSize")
 
