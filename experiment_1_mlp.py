@@ -61,22 +61,22 @@ def experiment_1(X, y, n_train_iter, n_average, num_N, test_size=0.95):
         # Without Bagging
 
         # Fit, Predict, MSE
-        for N in tqdm(range(1, num_N + 1)):
-            mean_mse = np.empty(n_average)
-            for j in range(n_average):
-                predictions = np.empty((N, len(x_test)))
-                for tr in range(N):
-                    mlp.fit(x_train, y_train)
-                    pred = mlp.predict(x_test)
-                    predictions[tr] = np.squeeze(pred)
 
-                # Testing
-                final_pred_ = np.array([np.mean(predictions[:, p]) for p in range(len(x_test))])
-                assert len(final_pred_) == len(y_test)
-                mse = mean_squared_error_np(y_test, final_pred_)
-                mean_mse[j] = mse
+        mean_mse = np.empty(n_average)
+        for j in range(n_average):
+            predictions = np.empty((num_N, len(x_test)))
+            for tr in range(num_N):
+                mlp.fit(x_train, y_train)
+                pred = mlp.predict(x_test)
+                predictions[tr] = np.squeeze(pred)
 
-            array_wob[N - 1, itr_train] = np.mean(mean_mse)
+            # Testing
+            final_pred_ = np.array([np.mean(predictions[:, p]) for p in range(len(x_test))])
+            assert len(final_pred_) == len(y_test)
+            mse = mean_squared_error_np(y_test, final_pred_)
+            mean_mse[j] = mse
+
+        array_wob[:, itr_train] = np.mean(mean_mse)
 
         # With Bagging
 
