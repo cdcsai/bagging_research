@@ -113,4 +113,4 @@ if __name__ == '__main__':
         f.close()
 
     print('done')
-    plot_kurt(path)
+    # plot_kurt(path)

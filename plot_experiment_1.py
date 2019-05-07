@@ -2,10 +2,11 @@ if __name__ == '__main__':
     import numpy as np
     import matplotlib.pyplot as plt
     from scipy.optimize import curve_fit
+    import os
 
     csv = False
 
-    data = open('results_mse_def|2|5|10|100_mlp_test_size=0.1.txt',
+    data = open('results_mse_def|3.0|50|2|1000_decision_tree_test_size=0.5.txt',
                 'r').readlines()
     x, y1, y2 = [int(el.split('|')[0]) for el in data[1:]], \
                 [float(el.split('|')[1]) for el in data[1:]], float(data[0].split('|')[1])
@@ -41,10 +42,12 @@ if __name__ == '__main__':
     ax.plot(x, fittedData, linestyle='-', color='#900000', label="fit with ({0:0.2g},{1:0.2g})".format(*popt))
 
     ###beautification
-    ax.legend(loc=0, title=r'$\sigma=5 \quad X \in R^{1000, 2}$', fontsize=12)
+    ax.legend(loc=0, title=r'$\sigma=3 \quad X \in R^{1000, 2}$', fontsize=12)
     ax.set_ylabel("MSE")
     ax.set_xlabel("N")
     ax.grid()
 
     ###putting the plot
     plt.show()
+
+    fig1.savefig(os.path.join('plots', f'sigma=3_trees_N=50_test_size=0.5_000samples.png'))
