@@ -6,7 +6,7 @@ if __name__ == '__main__':
 
     csv = False
 
-    data = open('results_mse_def|0.5|50|10|2000_mlp_test_size=0.1.txt',
+    data = open('results_mse_def|5.0|5|10|2000_mlp_test_size=0.1.txt',
                 'r').readlines()
     x, y1, y2 = [int(el.split('|')[0]) for el in data[1:]], \
                 [float(el.split('|')[1]) for el in data[1:]], float(data[0].split('|')[1])
