@@ -36,4 +36,4 @@ def plot_kurt(path, save_path='plots'):
 
 
 if __name__ == '__main__':
-    plot_kurt('res_special_rad__a=0.08333333333333333_trials=50000_N=150_n=10.txt', save_path='plots')
+    plot_kurt('res_special_rad__a=0.08333333333333333_trials=10000_N=500_n=10.txt', save_path='plots')

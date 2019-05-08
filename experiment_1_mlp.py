@@ -108,10 +108,10 @@ if __name__ == "__main__":
     parser.add_argument('--noise', type=float, default=5)
     parser.add_argument('--ds', type=str, default='def', help="Dataset")
     parser.add_argument('--n_feats', type=int, default=10, help="num features")
-    parser.add_argument('--n_average', type=int, default=5, help="Number or average")
+    parser.add_argument('--n_average', type=int, default=50, help="Number or average")
     parser.add_argument('--n_samples', type=int, default=2000, help="NUmber of samples")
     parser.add_argument('--n_train_iter', type=int, default=1, help="Number of train/test loop")
-    parser.add_argument('--N', type=int, default=10, help="Number of train/test loop")
+    parser.add_argument('--N', type=int, default=20, help="Number of train/test loop")
     parser.add_argument('--test_size', type=float, default=0.1, help="TestSize")
 
     args = parser.parse_args()
