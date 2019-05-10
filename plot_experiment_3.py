@@ -20,8 +20,8 @@ def plot_kurt(path, save_path='plots'):
     ax = fig1.add_subplot(1, 1, 1)
 
     # the three sets of data to plot
-    ax.plot(k, mse_var, linestyle='', marker='o', color='r', label=r'MSE without Bagging')
-    ax.plot(k, mse_var_bag, linestyle='', marker='o', color='b', label=r'MSE with Bagging')
+    ax.plot(k[1:-7], mse_var[1:-7], linestyle='', marker='o', color='r', label=r'MSE without Bagging')
+    ax.plot(k[1:-7], mse_var_bag[1:-7], linestyle='', marker='o', color='b', label=r'MSE with Bagging')
     plt.axvline(x=3 / 2)
 
     # beautification
@@ -36,4 +36,4 @@ def plot_kurt(path, save_path='plots'):
 
 
 if __name__ == '__main__':
-    plot_kurt('res_special_rad__a=0.08333333333333333_trials=10000_N=500_n=10.txt', save_path='plots')
+    plot_kurt('old_res/res_special_rad__a=0.125_trials=100000_N=20_n=10.txt', save_path='plots')

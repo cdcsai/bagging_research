@@ -8,20 +8,23 @@ def bagging_np(x):
     selected_indices = np.random.choice(indices, size=len(x), replace=True)
     return x[selected_indices]
 
-
-def distribution(name):
-    assert name in ['normal', 'uniform', 'rademacher']
-    return eval()
+#
+# def distribution(name):
+#     assert name in ['normal', 'uniform', 'rademacher']
+#     return eval()
 
 
 @njit(fastmath=True, parallel=True)
-def experiment_2(n_trials, N, n_samples_range, distribution='uniform'):
-    distance_array = np.empty((n_samples_range,))
+def experiment_2(n_trials, N, n_samples_range):
+    distance_array = np.empty((n_samples_range + 1,))
     TRUE_VAR = 1
 
-    for n in range(1, n_samples_range + 1):
-        total_var, total_var_bag = [], []
+    for n in range(2, n_samples_range + 1):
+        print('Count epoch #: ', n)
+        total_var, total_var_bag = np.empty(n_trials,), np.empty(n_trials,)
         for i in range(n_trials):
+            if i % 1000 == 0:
+                print('Count trial #: ', i)
             # x = np.random.normal(0, 1, size=n)
             # x = np.random.uniform(-1, 1, size=n)
             bernouilli = np.random.binomial(1, 0.5, size=n)
@@ -29,17 +32,17 @@ def experiment_2(n_trials, N, n_samples_range, distribution='uniform'):
             x = 2 * bernouilli - 1
 
             # # Estimator MSE var
-            var_x = np.var(x, ddof=1)
-            total_var.append(var_x)
+            var_x = (len(x) / (len(x) - 1)) * np.var(x)
+            total_var[i] = var_x
 
             # Estimator MSE var avec bagging
-            mean_bagg = []
-            for i in range(N):
+            mean_bagg = np.empty(N,)
+            for j in range(N):
                 bag = bagging_np(x)
                 var_x_bag = (len(bag) / (len(bag) - 1)) * np.var(bag)
-                mean_bagg.append(var_x_bag)
+                mean_bagg[j] = var_x_bag
             var_bag = np.mean(mean_bagg)
-            total_var_bag.append(var_bag)
+            total_var_bag[i] = var_bag
 
         EXP_var = np.mean(total_var)
         EXP_var_bag = np.mean(total_var_bag)
@@ -56,6 +59,7 @@ def experiment_2(n_trials, N, n_samples_range, distribution='uniform'):
         DIST = (MSE_VAR - MSE_VAR_BAG)
 
         distance_array[n] = DIST
+    return distance_array
 
 
 if __name__ == '__main__':
@@ -69,3 +73,8 @@ if __name__ == '__main__':
     parser.add_argument('--n_samples', type=int, default=100, help="NUmber of samples")
     parser.add_argument('--n_train_iter', type=int, default=10, help="Number of train/test loop")
     parser.add_argument('--N', type=int, default=200, help="Number of train/test loop")
+
+    distance_arr = experiment_2(n_trials=100000, N=50, n_samples_range=50)
+    with open('distance_array.txt', 'w') as f:
+        for el in distance_arr[2:]:
+            f.write(str(el) + '\n')
