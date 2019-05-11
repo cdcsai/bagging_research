@@ -74,7 +74,7 @@ if __name__ == '__main__':
     parser.add_argument('--n_train_iter', type=int, default=10, help="Number of train/test loop")
     parser.add_argument('--N', type=int, default=200, help="Number of train/test loop")
 
-    distance_arr = experiment_2(n_trials=100000, N=50, n_samples_range=50)
+    distance_arr = experiment_2(n_trials=50000, N=50, n_samples_range=50)
     with open('distance_array.txt', 'w') as f:
         for el in distance_arr[2:]:
             f.write(str(el) + '\n')

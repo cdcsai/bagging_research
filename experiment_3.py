@@ -12,7 +12,8 @@ def special_rad(p, a, size=1000):
 
 
 def kurtosis_estimator(x):
-    mu_4 = np.mean(x**4)
+    mu = np.mean(x)
+    mu_4 = np.mean((x - mu)**4)
     var_2 = np.var(x, ddof=1)**2
     kurtosis = mu_4 / var_2
     return kurtosis
