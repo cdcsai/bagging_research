@@ -6,7 +6,7 @@ if __name__ == '__main__':
 
     csv = False
 
-    data = open('results_mse_def|5.0|50|2|1000_decision_tree_test_size=0.95.txt',
+    data = open('results_mse_def|50|100|2|1000_100av.txt',
                 'r').readlines()
     x, y1, y2 = [int(el.split('|')[0]) for el in data[1:]], \
                 [float(el.split('|')[1]) for el in data[1:]], float(data[0].split('|')[1])
@@ -50,4 +50,4 @@ if __name__ == '__main__':
     ###putting the plot
     plt.show()
 
-    fig1.savefig(os.path.join('plots', f'sigma=5_trees_N=100_test_size=095_1000samples.png'))
+    fig1.savefig(os.path.join('plots', f'sigma=5_linreg_N=100_test_size=095_1000samples.png'))

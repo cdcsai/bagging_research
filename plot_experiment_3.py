@@ -20,9 +20,13 @@ def plot_kurt(path, save_path='plots'):
     ax = fig1.add_subplot(1, 1, 1)
 
     # the three sets of data to plot
-    ax.plot(k[1:-7], mse_var[1:-7], linestyle='', marker='o', color='r', label=r'MSE without Bagging')
-    ax.plot(k[1:-7], mse_var_bag[1:-7], linestyle='', marker='o', color='b', label=r'MSE with Bagging')
-    plt.axvline(x=3 / 2)
+    # ax.plot(k[5:-4], mse_var[5:-4], linestyle='', marker='o', color='r', label=r'MSE without Bagging')
+    # ax.plot(k[5:-4], mse_var_bag[5:-4], linestyle='', marker='o', color='b', label=r'MSE with Bagging')
+    # plt.axvline(x=3 / 2)
+
+    ax.plot(k, mse_var, linestyle='', marker='o', color='r', label=r'MSE without Bagging')
+    ax.plot(k, mse_var_bag, linestyle='', marker='o', color='b', label=r'MSE with Bagging')
+    # plt.axvline(x=3 / 2)
 
     # beautification
     ax.legend(loc=0, title=f'N={N} n={n} trials={trials} a={a}', fontsize=12)
@@ -36,4 +40,4 @@ def plot_kurt(path, save_path='plots'):
 
 
 if __name__ == '__main__':
-    plot_kurt('res_special_rad__a=0.125_trials=10000_N=50_n=10.txt', save_path='plots')
+    plot_kurt('res_special_rad__a=0.1_trials=10000_N=20_n=10.txt', save_path='plots')

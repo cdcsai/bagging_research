@@ -80,16 +80,56 @@ def xp_2(n_trials, n, N, a):
     return mse_var_array, mse_var_bag_array
 
 
+@njit(fastmath=True, parallel=True)
+def xp_2_biased(n_trials, n, N, a):
+    mse_var_array, mse_var_bag_array = np.empty(len(proba_range)), np.empty(len(proba_range))
+    for idp in range(len(proba_range)):
+        print('loop : #', idp)
+        total_var, total_var_bag = np.empty(n_trials), np.empty(n_trials)
+        for i in range(n_trials):
+            x = all_rads_sample[idp, i]
+            assert len(x) == n
+
+            # # Estimator MSE var
+            var_x = np.var(x)
+            total_var[i] = var_x
+
+            # Estimator MSE var avec bagging
+            mean_bagg = np.empty(N)
+            for j in range(N):
+                bagged_x = bagging_np(x)
+                var_x_bag = np.var(bagged_x)
+                mean_bagg[j] = var_x_bag
+            var_bag = np.mean(mean_bagg)
+            total_var_bag[i] = var_bag
+
+        EXP_var = np.mean(total_var)
+        EXP_var_bag = np.mean(total_var_bag)
+
+        BIAS_sq_var = (EXP_var - true_var(proba_range[idp], a)) ** 2
+        BIAS_sq_var_bag = (EXP_var_bag - true_var(proba_range[idp], a)) ** 2
+
+        VAR_VAR_bag = np.var(total_var_bag)
+        VAR_VAR = np.var(total_var)
+
+        MSE_VAR = VAR_VAR + BIAS_sq_var
+        MSE_VAR_BAG = VAR_VAR_bag + BIAS_sq_var_bag
+
+        mse_var_array[idp] = MSE_VAR
+        mse_var_bag_array[idp] = MSE_VAR_BAG
+    return mse_var_array, mse_var_bag_array
+
+
 if __name__ == '__main__':
     from tqdm import tqdm
     from plot_experiment_3 import plot_kurt
     import argparse
     parser = argparse.ArgumentParser(description='TLBiLSTM network')
     # parser.add_argument('--seed', type=int, default=0)
-    parser.add_argument('--n_trials', type=int, default=10, help="num trials")
+    parser.add_argument('--n_trials', type=int, default=100000, help="num trials")
     parser.add_argument('--n', type=int, default=10, help="Sample Size")
-    parser.add_argument('--N', type=int, default=1000, help="Number of bagged estimators")
-    parser.add_argument('--inv_a', type=float, default=12, help="a parameter in special rademacher distribution")
+    parser.add_argument('--N', type=int, default=20, help="Number of bagged estimators")
+    parser.add_argument('--inv_a', type=float, default=10, help="a parameter in special rademacher distribution")
 
     args = parser.parse_args()
     print("\n" + "Arguments are: " + "\n")
@@ -103,7 +143,7 @@ if __name__ == '__main__':
             x = special_rad(prob, a=a, size=args.n)
             all_rads_sample[enum, samp] = x
 
-    mse_var_array_fin, mse_var_bag_array_fin = xp_2(n_trials=args.n_trials, n=args.n, N=args.N, a=a)
+    mse_var_array_fin, mse_var_bag_array_fin = xp_2_biased(n_trials=args.n_trials, n=args.n, N=args.N, a=a)
     kurts = [kurt_special_rad(p, a) for p in proba_range]
     assert len(kurts) == len(mse_var_array_fin) == len(mse_var_bag_array_fin)
     path = f'res_special_rad__a={a}_trials={args.n_trials}_N={args.N}_n={args.n}.txt'
