@@ -125,11 +125,10 @@ if __name__ == '__main__':
     from plot_experiment_3 import plot_kurt
     import argparse
     parser = argparse.ArgumentParser(description='TLBiLSTM network')
-    # parser.add_argument('--seed', type=int, default=0)
-    parser.add_argument('--n_trials', type=int, default=100000, help="num trials")
+    parser.add_argument('--n_trials', type=int, default=10000, help="num trials")
     parser.add_argument('--n', type=int, default=10, help="Sample Size")
-    parser.add_argument('--N', type=int, default=20, help="Number of bagged estimators")
-    parser.add_argument('--inv_a', type=float, default=10, help="a parameter in special rademacher distribution")
+    parser.add_argument('--N', type=int, default=50, help="Number of bagged estimators")
+    parser.add_argument('--inv_a', type=float, default=8, help="a parameter in special rademacher distribution")
 
     args = parser.parse_args()
     print("\n" + "Arguments are: " + "\n")
@@ -143,7 +142,7 @@ if __name__ == '__main__':
             x = special_rad(prob, a=a, size=args.n)
             all_rads_sample[enum, samp] = x
 
-    mse_var_array_fin, mse_var_bag_array_fin = xp_2_biased(n_trials=args.n_trials, n=args.n, N=args.N, a=a)
+    mse_var_array_fin, mse_var_bag_array_fin = xp_2(n_trials=args.n_trials, n=args.n, N=args.N, a=a)
     kurts = [kurt_special_rad(p, a) for p in proba_range]
     assert len(kurts) == len(mse_var_array_fin) == len(mse_var_bag_array_fin)
     path = f'res_special_rad__a={a}_trials={args.n_trials}_N={args.N}_n={args.n}.txt'
